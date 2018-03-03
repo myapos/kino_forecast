@@ -1,4 +1,1 @@
-export const formatDate = (value) => {
-   // return value.getMonth()+1 + "/" + value.getDate() + "/" + value.getYear();
-   return value.getYear();
-}
+export const formatDate = value => `${value.getDate()}/${value.getMonth() + 1}/${value.getFullYear()}`;

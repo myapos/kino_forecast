@@ -9,7 +9,5 @@ export const generateDates = () => {
     arr.push(new Date(dt));
     dt.setDate(dt.getDate() + 1);
   }
-
   return arr;
-
-}
+};

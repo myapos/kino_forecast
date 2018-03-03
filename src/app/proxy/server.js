@@ -3,6 +3,7 @@ import httpProxy from 'http-proxy';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import { kinoUrl } from './server_constants';
+import { baseKinoUrl } from './server_constants';
 import { generateDates } from './server_utils/generateDates';
 import { formatDate } from './server_utils/formatDate';
 
@@ -35,8 +36,11 @@ server.set('port', 3000);
 
 server.all('/getHistoryResults/*', (req, res) => {
   const dates = generateDates();
-  console.log('formated date:', formatDate(dates[0]));
-  console.log('log:', dates[0]);
+  // console.log('formated date:', formatDate(dates[0]));
+  // console.log('log:', dates[0]);
+  const formattedDates = dates.map(date => formatDate(date));
+
+  // console.log('log:', formattedDates);
   apiProxy.web(req, res, { target: kinoUrl });
 });
 
