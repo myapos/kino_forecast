@@ -1,6 +1,6 @@
 import { startDate, endDate } from '../server_constants';
 
-export default function () {
+export const generateDates = () => {
   let
     arr = new Array(),
     dt = new Date(startDate);
