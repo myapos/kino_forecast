@@ -37,7 +37,8 @@ export class Service {
        // }
         
         // return this.http.get('https://api.nasa.gov/planetary/apod?api_key=NNKOjkoul8n1CH18TWA9gwngW1s1SmjESPjNoUFo')
-        return this.http.get(kino_url)       
+        // return this.http.get(kino_url)       
+        return this.http.get('http://localhost:3000/space/')       
         // return this.http.get('https://api.github.com/users/technoweenie')    //https://api.github.com/users/technoweenie    
         // return this.http.get(kino_url, options)        
         // return this.http.get(
