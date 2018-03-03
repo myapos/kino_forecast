@@ -29,7 +29,7 @@ export class initializeActions {
 
     static LOAD_DATA_SUCCESS = '[Data] Load Data Success';
     loadDataSuccess(data): Action {
-        // debugger;
+        debugger;
         return {
             type: initializeActions.LOAD_DATA_SUCCESS,
             payload: data

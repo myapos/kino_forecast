@@ -1,5 +1,5 @@
 export interface dataFromApi {
-    data?: object;
+  data?: object;
 }
 
 export interface Data {
