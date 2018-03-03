@@ -2,7 +2,11 @@ import express from 'express';
 import httpProxy from 'http-proxy';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import { kino_url } from './server_constants';
 
+// import * as utils from '../utils';
+
+// https://codeburst.io/using-nodejs-as-a-proxy-for-angularjs-ajax-requests-8e5e94203e0d
 // var apiForwardingUrl = 'http://api.open-notify.org/astros.json?';
 var apiForwardingUrl = 'https://applications.opap.gr/DrawsRestServices/kino/drawDate/25-02-2017.json?';
 
@@ -26,7 +30,7 @@ server.use(cors());
 server.set('port', 3000);
 // server.use(express.static(__dirname + '/app'));
 
-server.all("/space/*", function(req, res) {
+server.all("/getHistoryResults/*", function(req, res) {
     apiProxy.web(req, res, {target: apiForwardingUrl});
 });
 

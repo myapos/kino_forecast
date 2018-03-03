@@ -1,4 +1,4 @@
-import { startDate, endDate } from '../constants';
+import { startDate, endDate } from '../server_constants';
 
 export default function () {
   let
