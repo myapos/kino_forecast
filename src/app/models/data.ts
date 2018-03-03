@@ -3,6 +3,7 @@ export interface dataFromApi {
 }
 
 export interface Data {
-  login?: string;
-  id?: number;
+  // login?: string;
+  // id?: number;
+  draws?: object;
 }

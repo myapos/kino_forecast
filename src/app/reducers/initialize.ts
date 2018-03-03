@@ -7,8 +7,9 @@ import { initializeActions } from '../actions';
 export type AppState = Data;
 
 const initialState: AppState = {
-    login: '',
-    id: -1,
+    // login: '',
+    // id: -1,
+    draws: {},
 };
 
 export function reducer (state = initialState, action: Action): AppState {
