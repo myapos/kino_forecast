@@ -55,6 +55,7 @@
     "file-loader": "^1.1.5",
     "html-webpack-plugin": "^2.29.0",
     "http-proxy": "^1.16.2",
+    "http-proxy-async": "^1.14.0",
     "http-proxy-response-rewrite": "0.0.1",
     "istanbul-instrumenter-loader": "^3.0.0",
     "jasmine-core": "~2.8.0",
