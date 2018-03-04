@@ -14,7 +14,8 @@ import { Data } from './models';
 
 import { Effects } from './effects';
 
-//https://angular.io/guide/displaying-data
+// https://angular.io/guide/displaying-data
+// https://symbiotics.co.za/using-observables-in-angular-4-to-get-data-from-an-api-service/
 @Component({
   selector: 'app-root',
   // templateUrl: './app.component.html',
@@ -27,7 +28,7 @@ import { Effects } from './effects';
 
     <div *ngFor="let dd of d_; let rowIndex1 = index">
       <div *ngFor="let ddd of dd; let rowIndex = index">
-        <h2> ******** Day {{ (rowIndex1 + 1) }} Draw Index {{ (rowIndex + 1) }} *****</h2>
+        <h2> ******** Draw Index {{ ((rowIndex1 + 1 ) * rowIndex) + 1 }} *****</h2>
         <h3> Draw Number: {{ ddd.drawNo }} </h3>
         <h3> DrawTime: {{ ddd.drawTime }} </h3>
         <h3> Results: {{ ddd.results }} </h3>

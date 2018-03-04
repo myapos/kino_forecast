@@ -19,18 +19,31 @@ const formattedDates = dates.map(date => formatDate(date));
 // import * as utils from '../utils';
 
 // https://codeburst.io/using-nodejs-as-a-proxy-for-angularjs-ajax-requests-8e5e94203e0d
-
+// https://codeforgeek.com/2015/12/reverse-proxy-using-expressjs/
 // var apiForwardingUrl = 'https://applications.opap.gr/DrawsRestServices/kino/drawDate/25-02-2017.json?';
 
 // Solution for forwarding from http to https taken from:
 // http://stackoverflow.com/questions/15801014/how-to-use-node-http-proxy-for-http-to-https-routing
 const proxyOptions = {
   changeOrigin: true,
+  proxyTimeout: 10000,
 };
 
 
-httpProxy.prototype.onError = function (err) {
-  console.log(err);
+httpProxy.prototype.onError = function (err, req, res) {
+  console.log('error: ', err);
+  res.json({
+    draws:
+    {
+      draw: [
+        {
+          drawTime: 'Proxy timeout',
+          drawNo: 'Proxy timeout',
+          results: [-1],
+        },
+      ],
+    },
+  });
 };
 
 const apiProxy = httpProxy.createProxyServer(proxyOptions);
@@ -42,10 +55,12 @@ const server = express();
 server.use(cors());
 server.set('port', 3000);
 // server.use(express.static(__dirname + '/app'));
-const testDate = '24-02-2017';
+
 server.all('/getHistoryResults*', (req, res) => {
-  console.log('req:', req.query);
+  // console.log('req:', req.query);
+  // setTimeout(() => {
   apiProxy.web(req, res, { target: `${baseKinoUrl}${req.query.date}.json?` });
+  // }, 2000);
 });
 
 server.use(bodyParser.json());
