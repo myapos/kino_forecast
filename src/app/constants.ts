@@ -9,3 +9,5 @@ export const startDate = new Date('2017-01-01'); // YYYY-MM-DD
 export const endDate = new Date('2017-02-01'); // YYYY-MM-DD
 
 // export const endDate = new Date('2017-12-31'); // YYYY-MM-DD
+
+export const unplugApiKey = '4fed9657fb6f9971daca5ebf7701728f3afec8871d9e76a87fd25266e0d902d5';

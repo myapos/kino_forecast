@@ -1,30 +1,27 @@
+import occurences from './occurences';
+import extractValues from './extractValues';
+import formatUnplugData from './formatUnplugData';
+
 export default data => {
-  // debugger;
-  console.log('data:', data);
+  // console.log('data:', data);
 
-  //extract results from all arrays to export histogram data
+  // extract results from all arrays to export histogram data
 
-  let result = [];
-  let output = [];
+  // extract all values to an array
 
-  data.map( item => {
-    item.map(i => {
-      // output = results.push(i.results);
-      // debugger;
-      i.results.map( el => {
-        result.push(el);
-      })
-    })
-  });
+  const result = extractValues(data);
 
-  console.log('result:', result);
+  // console.log('result:', result);
 
-  const counts = {};
-  // result = [1, 1, 5, 10, 6, 8, 3, 1, 4, 2];
-  for (let i = 0; i < result.length; i++) {
-    const num = result[i];
-    counts[num] = counts[num] ? counts[num] + 1 : 1;
-  }
+  //calculate occurences of values
 
-  console.log('counts:', counts);
+  const counts = occurences(result);
+
+  // console.log('counts:', counts);
+
+  //format data top feed unplug api
+
+  const unplugData = formatUnplugData(data);
+
+  console.log('unplugData:', unplugData);
 }
