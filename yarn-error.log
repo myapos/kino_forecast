@@ -1,8 +1,8 @@
 Arguments: 
-  /usr/local/bin/node /usr/share/yarn/bin/yarn.js dev
+  /usr/local/bin/node /usr/share/yarn/bin/yarn.js start
 
 PATH: 
-  /home/myros/Desktop/myProjects/angular-effects-boilerplate/node_modules/.bin:/home/myros/.config/yarn/link/node_modules/.bin:/home/myros/Desktop/myProjects/angular-effects-boilerplate/node_modules/.bin:/home/myros/.config/yarn/link/node_modules/.bin:/home/myros/.yarn/bin:/usr/local/libexec/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/bin/node_modules/npm/bin/node-gyp-bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
+  /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
 
 Yarn version: 
   1.5.1
@@ -20,8 +20,9 @@ npm manifest:
     "license": "MIT",
     "scripts": {
       "ng": "ng",
-      "dev": "babel-watch src/app/proxy/server.js --presets es2015 ",
-      "start": "webpack-dev-server --port=4200 | yarn dev",
+      "dev": "babel-watch src/app/proxy/server.js",
+      "start_": "webpack-dev-server --port=4200 | babel-watch src/app/proxy/server.js --presets es2015",
+      "start": "webpack-dev-server --port=4200 --presets es2015",
       "build": "webpack",
       "test": "karma start ./karma.conf.js",
       "lint": "ng lint",
@@ -55,14 +56,24 @@ npm manifest:
       "@types/jasmine": "~2.8.3",
       "@types/jasminewd2": "~2.0.2",
       "@types/node": "~6.0.60",
+      "async": "^2.6.0",
       "autoprefixer": "^7.2.3",
+      "babel-cli": "^6.26.0",
+      "babel-preset-es2015": "^6.24.1",
       "babel-watch": "^2.0.7",
       "circular-dependency-plugin": "^4.2.1",
       "codelyzer": "^4.0.1",
       "copy-webpack-plugin": "~4.4.1",
+      "cors": "^2.8.4",
+      "eslint": "^4.18.2",
+      "eslint-config-airbnb-base": "^12.1.0",
+      "eslint-plugin-import": "^2.9.0",
       "express": "^4.16.2",
       "file-loader": "^1.1.5",
       "html-webpack-plugin": "^2.29.0",
+      "http-proxy": "^1.16.2",
+      "http-proxy-async": "^1.14.0",
+      "http-proxy-response-rewrite": "0.0.1",
       "istanbul-instrumenter-loader": "^3.0.0",
       "jasmine-core": "~2.8.0",
       "jasmine-spec-reporter": "~4.2.1",
@@ -7237,7 +7248,7 @@ Trace:
   Error: Command failed.
   Exit code: 1
   Command: sh
-  Arguments: -c babel-watch src/app/proxy/server.js --presets es2015 
+  Arguments: -c webpack-dev-server --port=4200 --presets es2015
   Directory: /home/myros/Desktop/myProjects/angular-effects-boilerplate
   Output:
   

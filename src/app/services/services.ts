@@ -29,9 +29,12 @@ export class Service {
 
     getMultiple(): Observable<Array<Data>> {
         const dates = generateDates();
-        const urlsWithDates = dates.map(date => `${proxyBaseURL}/${getHistoryResults}?date=${formatDate(date)}`);
+        // const urlsWithDates = dates.map(date => `${proxyBaseURL}/${getHistoryResults}?date=${formatDate(date)}`);
+        const urlsWithDates = dates.map(date => `${proxyBaseURL}/${formatDate(date)}.json`);
+
         // debugger;
-        let singleUrls = [`${proxyBaseURL}/${getHistoryResults}?date=24-02-2017`,`${proxyBaseURL}/${getHistoryResults}?date=25-02-2017`]; // can be replaced with any 'Single' identifier
+        // let singleUrls = [`${proxyBaseURL}/${getHistoryResults}?date=24-02-2017`,`${proxyBaseURL}/${getHistoryResults}?date=25-02-2017`]; // can be replaced with any 'Single' identifier
+        let singleUrls = [`${proxyBaseURL}/24-02-2017.json`,`${proxyBaseURL}/25-02-2017.json`]; // can be replaced with any 'Single' identifier
 
         let singleObservables = urlsWithDates.map((singleUrl: string, urlIndex: number) => {
             // debugger;
@@ -66,7 +69,7 @@ export class Service {
         const results = this.getMultiple().map(
             (singles: any) => {
                 // debugger;
-                console.log(singles); // [Single, Single, Single];
+                // console.log(singles); // [Single, Single, Single];
                 // In case error occured e.g. for the 'singleUrl' (our 'Single' identifier) at position 1,
                 // Output wil be: [Single, null, Single];
                 return singles;

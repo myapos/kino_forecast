@@ -14,6 +14,9 @@ import { Data } from './models';
 
 import { Effects } from './effects';
 
+import processData from './utils/processData';
+
+
 // https://angular.io/guide/displaying-data
 // https://symbiotics.co.za/using-observables-in-angular-4-to-get-data-from-an-api-service/
 @Component({
@@ -49,11 +52,13 @@ export class AppComponent implements OnInit{
     private initializeActions: initializeActions,
     private Effects : Effects
    ) {
-
+    // debugger;
+    // processData('test');
     this.apiData$ = this.store.select(state => {
       // debugger;
       // return state.apiData.data.draws.draw ?  state.apiData.data.draws.draw[0] : '';
       // if(Object.keys(state.apiData.data).length) {
+
       if(state.apiData.data.draws && Object.keys(state.apiData.data).length > 1) {
         // debugger;
         const res = Object.keys(state.apiData.data).map(key => {
@@ -76,7 +81,8 @@ export class AppComponent implements OnInit{
         //     goodResponse.push(evilResponseProps[prop]);
         // }
         // debugger;
-        console.log('goodResponse:', goodResponse);
+        // console.log('goodResponse:', goodResponse);
+        processData(goodResponse);
         // return res; 
         // return state.apiData.data; 
         return goodResponse;
