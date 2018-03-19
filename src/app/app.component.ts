@@ -26,8 +26,8 @@ import processData from './utils/processData';
   <h2>{{title}}</h2>
 
   Display Draws: <br>
-
   <div *ngIf="apiData$ | async as d_">
+  <!--
 
     <div *ngFor="let dd of d_; let rowIndex1 = index">
       <div *ngFor="let ddd of dd; let rowIndex = index">
@@ -38,7 +38,14 @@ import processData from './utils/processData';
        </div>   
     </div>
 
-  </div>`,
+-->
+
+  Occurences: <br>
+    <div>
+      {{occurences$ | json}}
+    </div>
+  </div>
+  `,
   styleUrls: ['./app.component.styl']
 })
 export class AppComponent implements OnInit{
@@ -46,6 +53,7 @@ export class AppComponent implements OnInit{
   // loadDataSuccess$ : Observable<any>;
   // apiData$: Observable<Data>;
   apiData$: Observable<any>;
+  occurences$;
   // private store: Store<AppState>,
   constructor(
     private store: Store<any>,
@@ -75,16 +83,21 @@ export class AppComponent implements OnInit{
           if(key !== 'draws'){
             goodResponse.push(state.apiData.data[key]);
           }
-
         });
         // for (prop of evilResponseProps) { 
         //     goodResponse.push(evilResponseProps[prop]);
         // }
         // debugger;
+
         // console.log('goodResponse:', goodResponse);
-        processData(goodResponse);
-        // return res; 
-        // return state.apiData.data; 
+        const processedData = processData(goodResponse);
+        this.occurences$ = processedData.counts;
+        // this.store.dispatch(this.initializeActions.callUnplugApi(processedData.unplugData));
+
+        // trigger action to unplug api
+
+        // load graph for histogram
+
         return goodResponse;
       } else {
         return [];

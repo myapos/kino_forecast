@@ -20,6 +20,11 @@ export class Effects {
         .switchMap(() => this.svc.getData())
         .map(data => this.initActions.loadDataSuccess(data));
 
+    @Effect() callUnplugApi$ = this.update$
+        .ofType(initializeActions.CALL_UNPLUG_API)
+        .switchMap(() => this.svc.callUnplugApi())
+        .map(data => this.initActions.unplugApiSuccess(data));
+
     // @Effect() loadHeroes$ = this.update$
     //     .ofType(HeroActions.LOAD_HEROES)
     //     .switchMap(() => this.svc.getHeroes())

@@ -6,13 +6,12 @@ export default ar => {
     const matches = t.split(/-|T/);
     const reversed = `${matches[2]}-${matches[1]}-${matches[0]}T${matches[3]}`;
     // console.log('reversed:', reversed);
-    const d = new Date(reversed);
-    const timestamp = Math.floor(d.getTime() / 1000);
-    // debugger;
-    const obj = {
+    const date = new Date(reversed);
+    const timestamp = Math.floor(date.getTime() / 1000);
+    const obj = [
       timestamp,
-      "value": el,
-    };
+      el,
+    ];
     result.push (obj);
   };
 

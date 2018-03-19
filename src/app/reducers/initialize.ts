@@ -21,6 +21,14 @@ export function reducer (state = initialState, action: Action): AppState {
             // debugger;
             const data = action.payload;
             return Object.assign({}, state, data );
+        } else if(action.type === initializeActions.CALL_UNPLUG_API) {
+            debugger;
+            const data = action.payload;
+            return Object.assign({}, state, data );
+        } else if(action.type === initializeActions.UNPLUG_API_SUCCESS) {
+            debugger;
+            const data = action.payload;
+            return Object.assign({}, state, data );
         } else {
             return state;
         }

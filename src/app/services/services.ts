@@ -7,7 +7,7 @@ import 'rxjs/add/operator/catch';
 
 import { Data } from '../models';
 import { getHistoryResults } from '../constants';
-import { proxyBaseURL } from '../constants';
+import { proxyBaseURL, unplugApiKey } from '../constants';
 // import generateDates from '../utils/generateDates';
 import { generateDates } from '../utils/generateDates';
 import { formatDate } from '../utils/formatDate';
@@ -76,22 +76,13 @@ export class Service {
             }
         );
 
-        // const res = forkJoin(
-        //     this.http.get(`${proxyBaseURL}/${getHistoryResults}?date=23-02-2017`).map((res:Response) => res.json()),
-        //     this.http.get(`${proxyBaseURL}/${getHistoryResults}?date=24-02-2017`).map((res:Response) => res.json()),
-        //     this.http.get(`${proxyBaseURL}/${getHistoryResults}?date=25-02-2017`).map((res:Response) => res.json())
-        // ).map(
-        //   data => {
-        //     // this.books = data[0]
-        //     // this.movies = data[1]
-        //     // this.results = data; 
-        //     return data;
-        //     // debugger;
-        //   },
-        //   err => console.error(err)
-        // );
-        // debugger;
         return results;
+    }
+
+    callUnplugApi(): Observable<any> {
+        debugger;
+        return this.http.get('/')
+        .map(res => res.json());
     }
 
     // getHero(id): Observable<Hero> {

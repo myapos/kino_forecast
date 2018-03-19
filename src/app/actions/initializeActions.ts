@@ -36,5 +36,22 @@ export class initializeActions {
         };
     }
 
+    static CALL_UNPLUG_API = '[Data] Call unplug API';
+    callUnplugApi(data): Action {
+        // debugger;
+        return {
+            type: initializeActions.CALL_UNPLUG_API,
+            payload: data
+        };
+    }
+
+    static UNPLUG_API_SUCCESS = '[Data] Unplug API Success';
+    unplugApiSuccess(data): Action {
+        // debugger;
+        return {
+            type: initializeActions.UNPLUG_API_SUCCESS,
+            payload: data
+        };
+    }
 
  }
