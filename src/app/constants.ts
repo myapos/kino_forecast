@@ -4,9 +4,9 @@ export const getHistoryResults = `getHistoryResults`;
 
 export const proxyBaseURL = `http://localhost:81/kino`;
 
-export const startDate = new Date('2018-03-17'); // YYYY-MM-DD
+export const startDate = new Date('2018-03-20'); // YYYY-MM-DD
 
-export const endDate = new Date('2018-03-17'); // YYYY-MM-DD
+export const endDate = new Date('2018-03-20'); // YYYY-MM-DD
 
 // export const endDate = new Date('2017-12-31'); // YYYY-MM-DD
 

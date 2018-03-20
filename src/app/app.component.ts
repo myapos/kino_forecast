@@ -46,7 +46,7 @@ import processData from './utils/processData';
     </div>
 
    <div>
-     <div style="display: block">
+     <!--<div style="display: block">
        <canvas baseChart
                [datasets]="barChartData"
                [labels]="barChartLabels"
@@ -55,19 +55,37 @@ import processData from './utils/processData';
                [chartType]="barChartType"
                (chartHover)="chartHovered($event)"
                (chartClick)="chartClicked($event)"></canvas>
-     </div>
-     <button (click)="randomize()">Update</button>
+     </div> -->
    </div>
 
    <div style="display: block">
      <canvas baseChart
                  [data]="doughnutChartData"
                  [labels]="doughnutChartLabels"
+                 [legend]="doughnutChartLegend"
                  [chartType]="doughnutChartType"
                  (chartHover)="chartHovered($event)"
                  (chartClick)="chartClicked($event)"></canvas>
    </div>
 
+   <div style="display: block">
+     <canvas baseChart
+             [data]="polarAreaChartData"
+             [labels]="polarAreaChartLabels"
+             [legend]="polarAreaLegend"
+             [chartType]="polarAreaChartType"
+             (chartHover)="chartHovered($event)"
+             (chartClick)="chartClicked($event)"></canvas>
+   </div>
+   <div style="display: block">
+     <canvas baseChart
+             [datasets]="radarChartData"
+             [labels]="radarChartLabels"
+             [legend]="radarAreaLegend"
+             [chartType]="radarChartType"
+             (chartHover)="chartHovered($event)"
+             (chartClick)="chartClicked($event)"></canvas>
+   </div>
   </div>
   `,
   styleUrls: ['./app.component.styl']
@@ -79,24 +97,34 @@ export class AppComponent implements OnInit{
   apiData$: Observable<any>;
   occurences$;
 
-  public barChartLabels:string[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
-  // public barChartLabels:string[] = [];
+  public barChartLabels:string[] = [];
   public barChartType:string = 'bar';
-  // public barChartType:string;
-  // public barChartLegend:boolean = true;
   public barChartLegend:boolean = false;
  
   public barChartData:any[] = [
-    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
-    {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'}
+    {data: [], label: ''}
   ];
-  // public barChartData:any[] = [];
 
   // Doughnut
-  public doughnutChartLabels:string[] = ['1', '2', '3', '4'];
+  public doughnutChartLabels:string[] = [];
   public doughnutChartData:number[] = [];
   public doughnutChartType:string = 'doughnut';
+  public doughnutChartLegend:boolean = false;
  
+  // PolarArea
+  public polarAreaChartLabels:string[] = [];
+  public polarAreaChartData:number[] = [];
+  public polarAreaLegend:boolean = false;
+  
+  public polarAreaChartType:string = 'polarArea';
+
+  // Radar
+  public radarChartLabels:string[] = [];
+ 
+  public radarChartData:any = [];
+  public radarAreaLegend:boolean = false;
+  public radarChartType:string = 'radar';
+
   onChartClick(event) {
     console.log(event);
   }
@@ -136,25 +164,13 @@ export class AppComponent implements OnInit{
     private initializeActions: initializeActions,
     private Effects : Effects
    ) {
-    // debugger;
-    // processData('test');
+
     this.apiData$ = this.store.select(state => {
-      // debugger;
-      // this.barChartData = [];
-      // this.barChartLabels = [];
-      this.doughnutChartData = []; //empty arrays
-      this.doughnutChartLabels = [];
-
-      // return state.apiData.data.draws.draw ?  state.apiData.data.draws.draw[0] : '';
-      // if(Object.keys(state.apiData.data).length) {
-
       if(state.apiData.data.draws && Object.keys(state.apiData.data).length > 1) {
-        // debugger;
         const res = Object.keys(state.apiData.data).map(key => {
           // console.log( state.apiData.data[key]); 
           return state.apiData.data[key]; 
         });
-        // debugger;
         // Step 1. Get all the object keys.
         let evilResponseProps = Object.keys(state.apiData.data);
         // Step 2. Create an empty array.
@@ -165,42 +181,39 @@ export class AppComponent implements OnInit{
             goodResponse.push(state.apiData.data[key]);
           }
         });
-        // for (prop of evilResponseProps) { 
-        //     goodResponse.push(evilResponseProps[prop]);
-        // }
-        // debugger;
-
-        // console.log('goodResponse:', goodResponse);
         const processedData = processData(goodResponse);
         this.occurences$ = processedData.counts;
+        this.doughnutChartLabels = [];
+        this.polarAreaChartLabels = [];
+        this.radarChartLabels = [];
 
-        // console.log('keys:', Object.keys(this.occurences$));
-
-        this.barChartLabels = Object.keys(this.occurences$);
-        // this.doughnutChartLabels = Object.keys(this.occurences$);
-        // debugger;
-        // this.barChartData.push({
-        //   data: this.occurences$,
-        //   label: 'test'
-        // });
+        // this.barChartLabels = [];
         for (let segm in this.occurences$) {
           let data = [];
           if(this.occurences$.hasOwnProperty(segm)) {
-            // debugger;
 
             for (let i=0; i < 80; i++) {
               if(i === parseInt(segm)-1) {
                 data.push(this.occurences$[segm]);
               } else data.push(0);
             }
-            // debugger;
-            // this.doughnutChartLabels.push(parseInt(segm)-1);
-            // console.log('data:', data);
-            this.barChartData.push({
+
+            this.doughnutChartLabels.push(segm.toString());
+            this.polarAreaChartLabels.push(segm.toString());
+            this.radarChartLabels.push(segm.toString());
+            // this.barChartLabels.push(segm.toString());
+
+            // this.barChartData.push({
+            //   data,
+            //   label: segm
+            // })
+
+            this.radarChartData.push({
               data,
               label: segm
             })
             this.doughnutChartData.push(this.occurences$[segm]);
+            this.polarAreaChartData.push(this.occurences$[segm]);
           }
         }
         // debugger;
