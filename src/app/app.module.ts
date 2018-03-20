@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -21,6 +22,8 @@ import { Service } from './services';
 
 import { Effects } from './effects';
 
+import { ChartsModule } from 'ng2-charts';
+
 
 // debugger;
 @NgModule({
@@ -31,6 +34,7 @@ import { Effects } from './effects';
     HttpModule,
     BrowserModule,
     AppRoutingModule,
+    ChartsModule,
     // StoreModule.forRoot(reducer),
     StoreModule.forRoot({ apiData: reducer }),
     StoreDevtoolsModule.instrument({
