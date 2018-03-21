@@ -1,3 +1,5 @@
+export const numOfNumbers = 80;
+
 export const getHistoryResults = `getHistoryResults`;
 
 // export const proxyBaseURL = `http://localhost:3000`;

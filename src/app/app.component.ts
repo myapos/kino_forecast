@@ -16,6 +16,8 @@ import { Effects } from './effects';
 
 import processData from './utils/processData';
 
+import { numOfNumbers } from './constants';
+
 // https://alligator.io/angular/chartjs-ng2-charts/
 // https://angular.io/guide/displaying-data
 // https://symbiotics.co.za/using-observables-in-angular-4-to-get-data-from-an-api-service/
@@ -100,7 +102,6 @@ export class AppComponent implements OnInit{
   public barChartLabels:string[] = [];
   public barChartType:string = 'bar';
   public barChartLegend:boolean = false;
- 
   public barChartData:any[] = [
     {data: [], label: ''}
   ];
@@ -115,12 +116,10 @@ export class AppComponent implements OnInit{
   public polarAreaChartLabels:string[] = [];
   public polarAreaChartData:number[] = [];
   public polarAreaLegend:boolean = false;
-  
   public polarAreaChartType:string = 'polarArea';
 
   // Radar
   public radarChartLabels:string[] = [];
- 
   public radarChartData:any = [];
   public radarAreaLegend:boolean = false;
   public radarChartType:string = 'radar';
@@ -129,33 +128,13 @@ export class AppComponent implements OnInit{
     console.log(event);
   }
 
-// events
+  // events
   public chartClicked(e:any):void {
     console.log(e);
   }
  
   public chartHovered(e:any):void {
     console.log(e);
-  }
-  public randomize():void {
-    // Only Change 3 values
-    let data = [
-      Math.round(Math.random() * 100),
-      59,
-      80,
-      (Math.random() * 100),
-      56,
-      (Math.random() * 100),
-      40];
-    let clone = JSON.parse(JSON.stringify(this.barChartData));
-    clone[0].data = data;
-    this.barChartData = clone;
-    /**
-     * (My guess), for Angular to recognize the change in the dataset
-     * it has to change the dataset variable directly,
-     * so one way around it, is to clone the data, change it and then
-     * assign it;
-     */
   }
 
   // private store: Store<AppState>,
@@ -182,6 +161,9 @@ export class AppComponent implements OnInit{
           }
         });
         const processedData = processData(goodResponse);
+
+        const sortedData = processedData.sortableCounts;
+        
         this.occurences$ = processedData.counts;
         this.doughnutChartLabels = [];
         this.polarAreaChartLabels = [];
@@ -192,7 +174,7 @@ export class AppComponent implements OnInit{
           let data = [];
           if(this.occurences$.hasOwnProperty(segm)) {
 
-            for (let i=0; i < 80; i++) {
+            for (let i=0; i < numOfNumbers; i++) {
               if(i === parseInt(segm)-1) {
                 data.push(this.occurences$[segm]);
               } else data.push(0);

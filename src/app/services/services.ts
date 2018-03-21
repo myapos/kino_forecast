@@ -8,7 +8,6 @@ import 'rxjs/add/operator/catch';
 import { Data } from '../models';
 import { getHistoryResults } from '../constants';
 import { proxyBaseURL, unplugApiKey } from '../constants';
-// import generateDates from '../utils/generateDates';
 import { generateDates } from '../utils/generateDates';
 import { formatDate } from '../utils/formatDate';
 
@@ -31,13 +30,10 @@ export class Service {
         const dates = generateDates();
         // const urlsWithDates = dates.map(date => `${proxyBaseURL}/${getHistoryResults}?date=${formatDate(date)}`);
         const urlsWithDates = dates.map(date => `${proxyBaseURL}/${formatDate(date)}.json`);
-
-        // debugger;
         // let singleUrls = [`${proxyBaseURL}/${getHistoryResults}?date=24-02-2017`,`${proxyBaseURL}/${getHistoryResults}?date=25-02-2017`]; // can be replaced with any 'Single' identifier
         let singleUrls = [`${proxyBaseURL}/24-02-2017.json`,`${proxyBaseURL}/25-02-2017.json`]; // can be replaced with any 'Single' identifier
 
         let singleObservables = urlsWithDates.map((singleUrl: string, urlIndex: number) => {
-            // debugger;
             return this.getSingle(singleUrl)
                 .map(single => { 
                     // debugger;
@@ -48,16 +44,13 @@ export class Service {
                     //     // });
                     //     return item;
                     // });
-                    // debugger;
                     return single;
                 })
                 .catch((error: any) => {
-                    // debugger;
                     console.error('Error loading Data, singleUrl: ' + singleUrl, 'Error: ', error);
                     return Observable.of(null); // In case error occurs, we need to return Observable, so the stream can continue
                 });
         });
-        // debugger;
         return forkJoin(singleObservables);
     };
 

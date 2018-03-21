@@ -203,8 +203,27 @@ export default data => {
   const counts = occurences(result);
 
   console.log('counts:', counts);
+
+  const sortableCounts = [];
+
+  for (let c in counts) {
+    if(counts.hasOwnProperty(c)) {
+      sortableCounts.push({
+        label: c, 
+        value: counts[c]
+      });
+    }
+  }
+
+  sortableCounts.sort(function(a, b) {
+      return b.value - a.value;
+  });
+
+  console.log('sorted counts:', sortableCounts);
+
   return({
     result,
-    counts
+    counts,
+    sortableCounts
   });
 }
