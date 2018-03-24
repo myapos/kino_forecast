@@ -10,7 +10,7 @@ import {
     selector: 'dailymax',
     template: `
     <h1>Daily Max </h1>
-    <table>
+    <table id="table">
         <tr> <th> Number </th> <th> Occurences </th></tr>
         <tr *ngFor="let value of dailyMaximumOccurences; let rowIndex1 = index">
            <td *ngFor="let v of value;">
@@ -18,7 +18,7 @@ import {
            </td>
         </tr> 
     </table>`,
-    styles: [``],
+    styleUrls: ['../app.component.styl'],
     encapsulation: ViewEncapsulation.Native
 })
 

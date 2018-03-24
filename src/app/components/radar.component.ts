@@ -20,10 +20,7 @@ import {
         (chartClick)="chartClicked($event)">
        </canvas>
     </div>`,
-    styles: [`
-    button {
-      color: #3498db;
-    }`],
+    styleUrls: ['../app.component.styl'],
     encapsulation: ViewEncapsulation.Native
 })
 

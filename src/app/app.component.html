@@ -1,7 +1,6 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <h2> {{title}} </h2>
 
-  Display Draws: <br>
   <div *ngIf="apiData$ | async as d_">
   <!--
     <div *ngFor="let dd of d_; let rowIndex1 = index">
@@ -12,11 +11,6 @@
         <h3> Results: {{ ddd.results }} </h3>
        </div>   
     </div> -->
-
-  Occurences: <br>
-  <div>
-    {{occurences$ | json}}
-  </div>
 
   <br>
   <div> Twelve values with maximum occurences:
