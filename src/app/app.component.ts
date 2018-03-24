@@ -29,7 +29,7 @@ import { DoughnutComponent } from './components/doughnut.component';
   styleUrls: ['./app.component.styl']
 })
 export class AppComponent implements OnInit{
-  title = 'Forecasting Kino Results';
+  title = 'Keno processing app';
   // loadDataSuccess$ : Observable<any>;
   // apiData$: Observable<Data>;
   apiData$: Observable<any>;

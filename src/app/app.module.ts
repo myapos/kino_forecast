@@ -48,7 +48,7 @@ import { DailyMax } from './components/dailyMax.component';
     BrowserModule,
     AppRoutingModule,
     ChartsModule,
-    // TabModule,
+    TabModule,
     // StoreModule.forRoot(reducer),
     StoreModule.forRoot({ apiData: reducer }),
     StoreDevtoolsModule.instrument({
