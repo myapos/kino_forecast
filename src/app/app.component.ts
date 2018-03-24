@@ -18,6 +18,8 @@ import processData from './utils/processData';
 
 import { numOfNumbers } from './constants';
 
+import { DoughnutComponent } from './components/doughnut.component';
+
 // https://alligator.io/angular/chartjs-ng2-charts/
 // https://angular.io/guide/displaying-data
 // https://symbiotics.co.za/using-observables-in-angular-4-to-get-data-from-an-api-service/
@@ -38,55 +40,40 @@ import { numOfNumbers } from './constants';
         <h3> DrawTime: {{ ddd.drawTime }} </h3>
         <h3> Results: {{ ddd.results }} </h3>
        </div>   
-    </div>
-
--->
+    </div> -->
 
   Occurences: <br>
     <div>
       {{occurences$ | json}}
     </div>
 
-   <div>
-     <!--<div style="display: block">
-       <canvas baseChart
-               [datasets]="barChartData"
-               [labels]="barChartLabels"
-               [options]="barChartOptions"
-               [legend]="barChartLegend"
-               [chartType]="barChartType"
-               (chartHover)="chartHovered($event)"
-               (chartClick)="chartClicked($event)"></canvas>
-     </div> -->
+  <doughnut 
+    [doughnutChartData]="doughnutChartData"
+    [doughnutChartLabels]="doughnutChartLabels"
+    [doughnutChartType]="doughnutChartType"
+    [doughnutChartLegend]="doughnutChartLegend">
+  </doughnut>
+
+   <div style="display: block">
+      <canvas baseChart
+       [data]="polarAreaChartData"
+       [labels]="polarAreaChartLabels"
+       [legend]="polarAreaLegend"
+       [chartType]="polarAreaChartType"
+       (chartHover)="chartHovered($event)"
+       (chartClick)="chartClicked($event)">
+      </canvas>
    </div>
 
    <div style="display: block">
-     <canvas baseChart
-                 [data]="doughnutChartData"
-                 [labels]="doughnutChartLabels"
-                 [legend]="doughnutChartLegend"
-                 [chartType]="doughnutChartType"
-                 (chartHover)="chartHovered($event)"
-                 (chartClick)="chartClicked($event)"></canvas>
-   </div>
-
-   <div style="display: block">
-     <canvas baseChart
-             [data]="polarAreaChartData"
-             [labels]="polarAreaChartLabels"
-             [legend]="polarAreaLegend"
-             [chartType]="polarAreaChartType"
-             (chartHover)="chartHovered($event)"
-             (chartClick)="chartClicked($event)"></canvas>
-   </div>
-   <div style="display: block">
-     <canvas baseChart
-             [datasets]="radarChartData"
-             [labels]="radarChartLabels"
-             [legend]="radarAreaLegend"
-             [chartType]="radarChartType"
-             (chartHover)="chartHovered($event)"
-             (chartClick)="chartClicked($event)"></canvas>
+      <canvas baseChart
+       [datasets]="radarChartData"
+       [labels]="radarChartLabels"
+       [legend]="radarAreaLegend"
+       [chartType]="radarChartType"
+       (chartHover)="chartHovered($event)"
+       (chartClick)="chartClicked($event)">
+      </canvas>
    </div>
   </div>
   `,
@@ -109,6 +96,7 @@ export class AppComponent implements OnInit{
   // Doughnut
   public doughnutChartLabels:string[] = [];
   public doughnutChartData:number[] = [];
+  public doughnutChartDataTest:number[] = [];
   public doughnutChartType:string = 'doughnut';
   public doughnutChartLegend:boolean = false;
  
@@ -123,6 +111,9 @@ export class AppComponent implements OnInit{
   public radarChartData:any = [];
   public radarAreaLegend:boolean = false;
   public radarChartType:string = 'radar';
+
+
+  public childTitle:string = 'This text is passed to child';
 
   onChartClick(event) {
     console.log(event);

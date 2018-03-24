@@ -24,17 +24,21 @@ import { Effects } from './effects';
 
 import { ChartsModule } from 'ng2-charts';
 
+import { TabModule } from 'angular-tabs-component';
 
-// debugger;
+import { DoughnutComponent } from './components/doughnut.component';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DoughnutComponent
   ],
   imports: [
     HttpModule,
     BrowserModule,
     AppRoutingModule,
     ChartsModule,
+    // TabModule,
     // StoreModule.forRoot(reducer),
     StoreModule.forRoot({ apiData: reducer }),
     StoreDevtoolsModule.instrument({
