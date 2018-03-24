@@ -25,58 +25,7 @@ import { DoughnutComponent } from './components/doughnut.component';
 // https://symbiotics.co.za/using-observables-in-angular-4-to-get-data-from-an-api-service/
 @Component({
   selector: 'app-root',
-  // templateUrl: './app.component.html',
-  template: `
-  <h2>{{title}}</h2>
-
-  Display Draws: <br>
-  <div *ngIf="apiData$ | async as d_">
-  <!--
-
-    <div *ngFor="let dd of d_; let rowIndex1 = index">
-      <div *ngFor="let ddd of dd; let rowIndex = index">
-        <h2> ******** Draw Index {{ ((rowIndex1 + 1 ) * rowIndex) + 1 }} *****</h2>
-        <h3> Draw Number: {{ ddd.drawNo }} </h3>
-        <h3> DrawTime: {{ ddd.drawTime }} </h3>
-        <h3> Results: {{ ddd.results }} </h3>
-       </div>   
-    </div> -->
-
-  Occurences: <br>
-    <div>
-      {{occurences$ | json}}
-    </div>
-
-  <doughnut 
-    [doughnutChartData]="doughnutChartData"
-    [doughnutChartLabels]="doughnutChartLabels"
-    [doughnutChartType]="doughnutChartType"
-    [doughnutChartLegend]="doughnutChartLegend">
-  </doughnut>
-
-   <div style="display: block">
-      <canvas baseChart
-       [data]="polarAreaChartData"
-       [labels]="polarAreaChartLabels"
-       [legend]="polarAreaLegend"
-       [chartType]="polarAreaChartType"
-       (chartHover)="chartHovered($event)"
-       (chartClick)="chartClicked($event)">
-      </canvas>
-   </div>
-
-   <div style="display: block">
-      <canvas baseChart
-       [datasets]="radarChartData"
-       [labels]="radarChartLabels"
-       [legend]="radarAreaLegend"
-       [chartType]="radarChartType"
-       (chartHover)="chartHovered($event)"
-       (chartClick)="chartClicked($event)">
-      </canvas>
-   </div>
-  </div>
-  `,
+  templateUrl: './app.component.html',
   styleUrls: ['./app.component.styl']
 })
 export class AppComponent implements OnInit{
@@ -86,12 +35,12 @@ export class AppComponent implements OnInit{
   apiData$: Observable<any>;
   occurences$;
 
-  public barChartLabels:string[] = [];
-  public barChartType:string = 'bar';
-  public barChartLegend:boolean = false;
-  public barChartData:any[] = [
-    {data: [], label: ''}
-  ];
+  // public barChartLabels:string[] = [];
+  // public barChartType:string = 'bar';
+  // public barChartLegend:boolean = false;
+  // public barChartData:any[] = [
+  //   {data: [], label: ''}
+  // ];
 
   // Doughnut
   public doughnutChartLabels:string[] = [];
@@ -111,7 +60,6 @@ export class AppComponent implements OnInit{
   public radarChartData:any = [];
   public radarAreaLegend:boolean = false;
   public radarChartType:string = 'radar';
-
 
   public childTitle:string = 'This text is passed to child';
 
@@ -134,7 +82,6 @@ export class AppComponent implements OnInit{
     private initializeActions: initializeActions,
     private Effects : Effects
    ) {
-
     this.apiData$ = this.store.select(state => {
       if(state.apiData.data.draws && Object.keys(state.apiData.data).length > 1) {
         const res = Object.keys(state.apiData.data).map(key => {
@@ -200,8 +147,6 @@ export class AppComponent implements OnInit{
       } else {
         return [];
       }
-
-
     });
 
    
