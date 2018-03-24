@@ -9,7 +9,7 @@ import {
 @Component({
     selector: 'doughnut',
     template: `
-    <h1>Doughnut</h1>
+    <h3>Doughnut</h3>
     <div style="display: block">
       <canvas baseChart
           [data]="doughnutChartData"

@@ -2,10 +2,7 @@
 <h2> {{title}} </h2>
 
   <tabs>
-    <tab tabTitle="Home">
-      Intro - Usage - etc
-    </tab>
-    <tab tabTitle="Graphs" active="true">
+    <tab tabTitle="Home" active="true">
       <div *ngIf="apiData$ | async as d_">
       <!--
         <div *ngFor="let dd of d_; let rowIndex1 = index">
@@ -16,11 +13,22 @@
             <h3> Results: {{ ddd.results }} </h3>
            </div>   
         </div> -->
-      <div> Twelve values with maximum occurences:
-        <dailymax 
-          [dailyMaximumOccurences]="dailyMaximumOccurences$">
-        </dailymax>
-      </div>
+
+      <label>
+          Start Date
+          <input [owlDateTimeTrigger]="dt3" [owlDateTime]="dt3">
+          <owl-date-time [pickerType]="'calendar'" #dt3></owl-date-time>
+      </label>
+
+      <label>
+          End Date
+          <input [owlDateTimeTrigger]="dt4" [owlDateTime]="dt4">
+          <owl-date-time [pickerType]="'calendar'" #dt4></owl-date-time>
+      </label>
+
+      <dailymax 
+        [dailyMaximumOccurences]="dailyMaximumOccurences$">
+      </dailymax>
 
       <doughnut 
         [doughnutChartData]="doughnutChartData"
@@ -44,6 +52,15 @@
       </radar>
 
       </div>
+    </tab>
+    <tab tabTitle="Keno Live" active="true">
+      live
+    </tab>
+    <tab tabTitle="Info">
+      Info
+    </tab>
+    <tab tabTitle="Contact">
+      Contact
     </tab>
   <tabs>
   

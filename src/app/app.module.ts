@@ -18,6 +18,8 @@ import { HttpModule } from '@angular/http';
 
 import { EffectsModule } from '@ngrx/effects';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { Service } from './services';
 
 import { Effects } from './effects';
@@ -25,6 +27,8 @@ import { Effects } from './effects';
 import { ChartsModule } from 'ng2-charts';
 
 import { TabModule } from 'angular-tabs-component';
+
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 import { DoughnutComponent } from './components/doughnut.component';
 
@@ -46,9 +50,12 @@ import { DailyMax } from './components/dailyMax.component';
   imports: [
     HttpModule,
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     ChartsModule,
     TabModule,
+    OwlDateTimeModule, 
+    OwlNativeDateTimeModule,
     // StoreModule.forRoot(reducer),
     StoreModule.forRoot({ apiData: reducer }),
     StoreDevtoolsModule.instrument({

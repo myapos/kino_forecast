@@ -9,7 +9,7 @@ import {
 @Component({
     selector: 'radar',
     template: `
-    <h1>Radar</h1>
+    <h3>Radar</h3>
     <div style="display: block">
        <canvas baseChart
         [datasets]="radarChartData"

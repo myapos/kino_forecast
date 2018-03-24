@@ -70,6 +70,8 @@
     "karma-jasmine-html-reporter": "^0.2.2",
     "less-loader": "^4.0.5",
     "ml-regression-multivariate-linear": "^1.1.0",
+    "moment": "^2.21.0",
+    "ng-pick-datetime": "^5.2.3",
     "ng2-charts": "^1.6.0",
     "ngrx-store-freeze": "^0.2.1",
     "postcss-import": "^11.0.0",

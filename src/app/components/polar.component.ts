@@ -9,7 +9,7 @@ import {
 @Component({
     selector: 'polar',
     template: `
-    <h1>Polar</h1>
+    <h3>Polar</h3>
     <div style="display: block">
        <canvas baseChart
         [data]="polarAreaChartData"
