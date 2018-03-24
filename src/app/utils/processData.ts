@@ -219,11 +219,24 @@ export default data => {
       return b.value - a.value;
   });
 
+  const sortableCountsAr = sortableCounts.map(i => {
+    const temp = [];
+    for(let key in i) {
+      if(i.hasOwnProperty(key)) {
+        temp.push(parseInt(i[key]));
+      }
+    }
+    return temp;
+  });
+
   console.log('sorted counts:', sortableCounts);
+
+  console.log('sorted counts ar:', sortableCountsAr);
 
   return({
     result,
     counts,
-    sortableCounts
+    sortableCounts,
+    sortableCountsAr
   });
 }

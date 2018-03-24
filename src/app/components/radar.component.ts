@@ -28,7 +28,7 @@ import {
 })
 
 export class RadarComponent {
-    // Doughnut
+    // Radar
 
     @Input() radarChartLabels;
     @Input() radarChartData;

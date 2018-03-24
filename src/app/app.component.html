@@ -18,6 +18,13 @@
     {{occurences$ | json}}
   </div>
 
+  <br>
+  <div> Twelve values with maximum occurences:
+    <dailymax 
+      [dailyMaximumOccurences]="dailyMaximumOccurences$">
+    </dailymax>
+  </div>
+
   <doughnut 
     [doughnutChartData]="doughnutChartData"
     [doughnutChartLabels]="doughnutChartLabels"

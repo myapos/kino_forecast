@@ -34,6 +34,7 @@ export class AppComponent implements OnInit{
   // apiData$: Observable<Data>;
   apiData$: Observable<any>;
   occurences$;
+  dailyMaximumOccurences$;
 
   // public barChartLabels:string[] = [];
   // public barChartType:string = 'bar';
@@ -57,7 +58,7 @@ export class AppComponent implements OnInit{
 
   // Radar
   public radarChartLabels:string[] = [];
-  public radarChartData:any = [];
+  public radarChartData:any = [{data: '' ,label: '' }];
   public radarAreaLegend:boolean = false;
   public radarChartType:string = 'radar';
 
@@ -100,8 +101,10 @@ export class AppComponent implements OnInit{
         });
         const processedData = processData(goodResponse);
 
-        const sortedData = processedData.sortableCounts;
-        
+        const sortedData = processedData.sortableCountsAr;
+
+        this.dailyMaximumOccurences$ = sortedData.slice(0, 12);
+
         this.occurences$ = processedData.counts;
         this.doughnutChartLabels = [];
         this.polarAreaChartLabels = [];

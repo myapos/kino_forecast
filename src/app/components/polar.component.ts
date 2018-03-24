@@ -28,7 +28,7 @@ import {
 })
 
 export class PolarComponent {
-    // Doughnut
+    // Polar
 
     @Input() polarAreaChartData;
     @Input() polarAreaChartLabels;

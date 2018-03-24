@@ -30,8 +30,9 @@ import { DoughnutComponent } from './components/doughnut.component';
 
 import { PolarComponent } from './components/polar.component';
 
-
 import { RadarComponent } from './components/radar.component';
+
+import { DailyMax } from './components/dailyMax.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { RadarComponent } from './components/radar.component';
     AppComponent,
     DoughnutComponent,
     PolarComponent,
-    RadarComponent
+    RadarComponent,
+    DailyMax
   ],
   imports: [
     HttpModule,
