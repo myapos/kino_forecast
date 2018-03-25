@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { forkJoin } from 'rxjs/observable/forkJoin';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/catch';
+import { Store } from '@ngrx/store';
 
 import { Data } from '../models';
 import { getHistoryResults } from '../constants';
@@ -15,6 +16,7 @@ import { formatDate } from '../utils/formatDate';
 
 @Injectable()
 export class Service {
+    store$: Observable<any>;
     constructor (private http: Http) {}
 
     getSingle(singleUrl: string): Observable<Data> {
@@ -26,8 +28,8 @@ export class Service {
             });
     };
 
-    getMultiple(): Observable<Array<Data>> {
-        const dates = generateDates();
+    getMultiple(mode, payload): Observable<Array<Data>> {
+        const dates = generateDates(mode, payload);
         // const urlsWithDates = dates.map(date => `${proxyBaseURL}/${getHistoryResults}?date=${formatDate(date)}`);
         const urlsWithDates = dates.map(date => `${proxyBaseURL}/${formatDate(date)}.json`);
         // let singleUrls = [`${proxyBaseURL}/${getHistoryResults}?date=24-02-2017`,`${proxyBaseURL}/${getHistoryResults}?date=25-02-2017`]; // can be replaced with any 'Single' identifier
@@ -55,11 +57,20 @@ export class Service {
     };
 
 
-    getData(): Observable<[any]> {
-        const dates = generateDates();
+    getData(mode, payload): Observable<[any]> {
+        let dates;
+
+        if(mode === 'init'){
+           dates = generateDates(mode, payload);
+        } else if( mode === 'range') {
+            // debugger;
+            // console.log('store:', this.store$);
+            dates = generateDates(mode, payload);
+            //have to get start and end date from action
+        }
         const formattedDates = dates.map(date => formatDate(date));
 
-        const results = this.getMultiple().map(
+        const results = this.getMultiple(mode, payload).map(
             (singles: any) => {
                 // debugger;
                 // console.log(singles); // [Single, Single, Single];

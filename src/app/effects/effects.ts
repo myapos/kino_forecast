@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Effect, Actions } from '@ngrx/effects';
+import { Store, Action } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/withLatestFrom';
 
 import { AppState } from '../reducers';
 import { initializeActions } from '../actions';
@@ -9,15 +12,30 @@ import { Service } from '../services';
 
 @Injectable()
 export class Effects {
+    store$: Observable<any>;
+    payload$;
     constructor (
         private update$: Actions,
         private initActions: initializeActions,
         private svc: Service,
-    ) {}
+        private store: Store<any>
+    ) {
+        this.store$ = store;
+    }
 
     @Effect() loadData$ = this.update$
         .ofType(initializeActions.LOAD_DATA)
-        .switchMap(() => this.svc.getData())
+        .switchMap(() => this.svc.getData('init', ''))
+        .map(data => this.initActions.loadDataSuccess(data));
+
+    @Effect() loadDataRange = this.update$
+        .ofType(initializeActions.START_AND_END_DATE)
+        // .withLatestFrom(this.store$)
+        .map((action) => { this.payload$ = action.payload;} )
+        .switchMap(() => { 
+            // debugger; 
+            console.log('payload:', this.payload$);
+            return this.svc.getData('range', this.payload$);})
         .map(data => this.initActions.loadDataSuccess(data));
 
     @Effect() callUnplugApi$ = this.update$

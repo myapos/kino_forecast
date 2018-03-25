@@ -1,8 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-// import { Observable } from 'rxjs/Rx';
-import { Store } from '@ngrx/store';
 
-// import * as fromRoot from './reducers';
+import { Store } from '@ngrx/store';
 
 import { AppState } from './reducers';
 
@@ -94,11 +92,17 @@ export class AppComponent implements OnInit{
         // Step 2. Create an empty array.
         let goodResponse = [];
         // Step 3. Iterate throw all keys.
+        // debugger;
         evilResponseProps.map(key => {
-          if(key !== 'draws'){
+          // debugger;
+          if(key !== 'draws' && key !== 'start'&& key !== 'end'){
             goodResponse.push(state.apiData.data[key]);
           }
         });
+
+        // debugger;
+
+        console.log('goodResponse:', goodResponse);
         const processedData = processData(goodResponse);
 
         const sortedData = processedData.sortableCountsAr;
@@ -106,9 +110,17 @@ export class AppComponent implements OnInit{
         this.dailyMaximumOccurences$ = sortedData.slice(0, 12);
 
         this.occurences$ = processedData.counts;
+
+        // re initialize --- empty arrays
         this.doughnutChartLabels = [];
         this.polarAreaChartLabels = [];
         this.radarChartLabels = [];
+
+        // re initialize arrays
+        this.doughnutChartData.length = 0;
+        this.polarAreaChartData.length = 0;
+        this.radarChartLabels.length = 0;
+
 
         // this.barChartLabels = [];
         for (let segm in this.occurences$) {
@@ -134,12 +146,13 @@ export class AppComponent implements OnInit{
             this.radarChartData.push({
               data,
               label: segm
-            })
+            });
             this.doughnutChartData.push(this.occurences$[segm]);
             this.polarAreaChartData.push(this.occurences$[segm]);
           }
         }
         // debugger;
+
         // this.store.dispatch(this.initializeActions.callUnplugApi(processedData.unplugData));
 
         // trigger action to unplug api
