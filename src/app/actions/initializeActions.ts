@@ -27,6 +27,13 @@ export class initializeActions {
         };
     }
 
+    static LOAD_DATA_RANGE = '[Data] Load data with range';
+    loadDataRange(): Action {
+        return {
+            type: initializeActions.LOAD_DATA_RANGE
+        };
+    }
+
     static LOAD_DATA_SUCCESS = '[Data] Load Data Success';
     loadDataSuccess(data): Action {
         // debugger;
@@ -54,4 +61,15 @@ export class initializeActions {
         };
     }
 
+    static START_AND_END_DATE = '[Data] Start and End date';
+    setStartAndEndDate(start, end): Action {
+        // debugger;
+        return {
+            type: initializeActions.START_AND_END_DATE,
+            payload: {
+                start,
+                end
+            }
+        };
+    }
  }

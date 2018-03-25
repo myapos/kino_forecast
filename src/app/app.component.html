@@ -14,17 +14,7 @@
            </div>   
         </div> -->
 
-      <label>
-          Start Date
-          <input [owlDateTimeTrigger]="dt3" [owlDateTime]="dt3">
-          <owl-date-time [pickerType]="'calendar'" #dt3></owl-date-time>
-      </label>
-
-      <label>
-          End Date
-          <input [owlDateTimeTrigger]="dt4" [owlDateTime]="dt4">
-          <owl-date-time [pickerType]="'calendar'" #dt4></owl-date-time>
-      </label>
+      <dateSelector> </dateSelector>
 
       <dailymax 
         [dailyMaximumOccurences]="dailyMaximumOccurences$">
@@ -53,10 +43,10 @@
 
       </div>
     </tab>
-    <tab tabTitle="Keno Live" active="true">
+    <tab tabTitle="Keno Live">
       live
     </tab>
-    <tab tabTitle="Info">
+    <tab tabTitle="About">
       Info
     </tab>
     <tab tabTitle="Contact">

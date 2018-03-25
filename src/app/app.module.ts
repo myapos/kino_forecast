@@ -38,6 +38,8 @@ import { RadarComponent } from './components/radar.component';
 
 import { DailyMax } from './components/dailyMax.component';
 
+import { DateSelector } from './components/dateSelector.component';
+
 
 @NgModule({
   declarations: [
@@ -45,7 +47,8 @@ import { DailyMax } from './components/dailyMax.component';
     DoughnutComponent,
     PolarComponent,
     RadarComponent,
-    DailyMax
+    DailyMax,
+    DateSelector
   ],
   imports: [
     HttpModule,
