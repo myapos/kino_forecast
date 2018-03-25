@@ -15,6 +15,8 @@ import { AppState } from '../reducers';
 
 import { initializeActions } from '../actions';
 
+import { startDateStr, endDateStr, startDate, endDate } from '../constants';
+
 @Component({
     selector: 'dateSelector',
     template: `
@@ -82,6 +84,10 @@ export class DateSelector implements AfterViewInit{
   ngAfterViewInit() {
     // child is set
     // outputs `I am span`
-    // console.log('start: ',this.start.nativeElement.value);
+    console.log('start: ',this.start.nativeElement.value);
+
+    this.start.nativeElement.value = `${startDate.getDate()}-${startDate.getMonth() + 1}-${startDate.getFullYear()}`;
+    this.end.nativeElement.value = `${endDate.getDate()}-${endDate.getMonth() + 1}-${endDate.getFullYear()}`;
+    // debugger;
   }
 }

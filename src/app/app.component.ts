@@ -116,7 +116,7 @@ export class AppComponent implements OnInit{
         this.polarAreaChartLabels = [];
         this.radarChartLabels = [];
 
-        // re initialize arrays
+        // re initialize arrays --- empty arrays
         this.doughnutChartData.length = 0;
         this.polarAreaChartData.length = 0;
         this.radarChartLabels.length = 0;
