@@ -43,6 +43,11 @@ export class Effects {
         .switchMap(() => this.svc.callUnplugApi())
         .map(data => this.initActions.unplugApiSuccess(data));
 
+    @Effect() loadDataOfCurrentDraw$ = this.update$
+        .ofType(initializeActions.GET_DRAWS_OF_CURRENT_DATE)
+        .switchMap(() => this.svc.getData('currentDate', ''))
+        .map(data => this.initActions.loadDataSuccess(data));
+
     // @Effect() loadHeroes$ = this.update$
     //     .ofType(HeroActions.LOAD_HEROES)
     //     .switchMap(() => this.svc.getHeroes())

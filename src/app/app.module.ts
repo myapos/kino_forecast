@@ -40,6 +40,8 @@ import { DailyMax } from './components/dailyMax.component';
 
 import { DateSelector } from './components/dateSelector.component';
 
+import { LiveDraws } from './components/live.component';
+
 
 @NgModule({
   declarations: [
@@ -48,7 +50,8 @@ import { DateSelector } from './components/dateSelector.component';
     PolarComponent,
     RadarComponent,
     DailyMax,
-    DateSelector
+    DateSelector,
+    LiveDraws
   ],
   imports: [
     HttpModule,

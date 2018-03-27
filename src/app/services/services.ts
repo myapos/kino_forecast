@@ -59,7 +59,7 @@ export class Service {
 
     getData(mode, payload): Observable<[any]> {
         let dates;
-
+        // debugger;
         if(mode === 'init'){
            dates = generateDates(mode, payload);
         } else if( mode === 'range') {
@@ -67,6 +67,9 @@ export class Service {
             // console.log('store:', this.store$);
             dates = generateDates(mode, payload);
             //have to get start and end date from action
+        } else if (mode === 'currentDate') {
+            // debugger;
+            dates = generateDates(mode, payload);
         }
         const formattedDates = dates.map(date => formatDate(date));
 

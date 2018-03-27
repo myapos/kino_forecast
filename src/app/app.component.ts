@@ -14,7 +14,7 @@ import { Effects } from './effects';
 
 import processData from './utils/processData';
 
-import { numOfNumbers } from './constants';
+import { numOfNumbers, interval } from './constants';
 
 import { DoughnutComponent } from './components/doughnut.component';
 
@@ -33,7 +33,7 @@ export class AppComponent implements OnInit{
   apiData$: Observable<any>;
   occurences$;
   dailyMaximumOccurences$;
-
+  timeInt$;
   // public barChartLabels:string[] = [];
   // public barChartType:string = 'bar';
   // public barChartLegend:boolean = false;
@@ -119,9 +119,9 @@ export class AppComponent implements OnInit{
         // re initialize arrays --- empty arrays
         this.doughnutChartData.length = 0;
         this.polarAreaChartData.length = 0;
-        this.radarChartLabels.length = 0;
+        this.radarChartData.length = 0;
 
-
+        // debugger;
         // this.barChartLabels = [];
         for (let segm in this.occurences$) {
           let data = [];
@@ -175,4 +175,18 @@ export class AppComponent implements OnInit{
     this.store.dispatch(this.initializeActions.loadData());
   }
 
+  manageTabs(event) {
+    // console.log('log:', event);
+    if(event.tabTitle === 'Keno Live') {
+      // debugger;
+      this.timeInt$ = setInterval(() => { 
+        console.log('getting draw results...'); 
+        this.store.dispatch(this.initializeActions.getDrawsOfCurrentDate());
+      }, interval);
+      // log a message every x secs
+    } else {
+      clearInterval(this.timeInt$);
+      console.log('stopping getting draw results...'); 
+    }
+  }
 }

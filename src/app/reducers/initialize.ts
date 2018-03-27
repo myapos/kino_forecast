@@ -48,6 +48,10 @@ export function reducer (state = initialState, action: Action): AppState {
             // debugger;
             const data = action.payload;
             return Object.assign({}, state, data );
+        } else if(action.type === initializeActions.GET_DRAWS_OF_CURRENT_DATE) {
+            // debugger;
+            const data = action.payload;
+            return Object.assign({}, state, data );
         } else {
             return state;
         }

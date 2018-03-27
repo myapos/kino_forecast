@@ -72,4 +72,13 @@ export class initializeActions {
             }
         };
     }
+
+    static GET_DRAWS_OF_CURRENT_DATE = '[Data] Get Draws Of Current Date';
+    getDrawsOfCurrentDate(): Action {
+        // debugger;
+        return {
+            type: initializeActions.GET_DRAWS_OF_CURRENT_DATE,
+            payload: {}
+        };
+    }
  }

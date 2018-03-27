@@ -11,6 +11,11 @@ export const generateDates = (mode, payload) => {
     // debugger;
     dt = new Date(payload.start);
     end = new Date(payload.end);
+  } else if (mode === 'currentDate') {
+    // debugger;
+    let date = new Date();
+    dt = new Date(); // new Date(date.setDate(date.getDate() - 1))
+    end = new Date();
   }
 
 
@@ -18,5 +23,6 @@ export const generateDates = (mode, payload) => {
     arr.push(new Date(dt));
     dt.setDate(dt.getDate() + 1);
   }
+  // debugger;  
   return arr;
 };

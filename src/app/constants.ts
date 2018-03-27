@@ -1,5 +1,7 @@
 export const numOfNumbers = 80;
 
+export const interval = 5000; // 300000 5 mins
+
 export const getHistoryResults = `getHistoryResults`;
 
 // export const proxyBaseURL = `http://localhost:3000`;
@@ -17,6 +19,8 @@ let date = new Date();
 export const startDate = new Date(date.setDate(date.getDate() - 1)); // YYYY-MM-DD
 
 export const endDate = new Date(); // YYYY-MM-DD
+
+// export const currentDate = new Date(); // YYYY-MM-DD
 
 // export const endDate = new Date('2017-12-31'); // YYYY-MM-DD
 

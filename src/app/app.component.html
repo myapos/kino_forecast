@@ -1,7 +1,7 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <h2> {{title}} </h2>
 
-  <tabs>
+  <tabs (currentTabChange)="manageTabs($event)">
     <tab tabTitle="Home" active="true">
       <div *ngIf="apiData$ | async as d_">
       <!--
@@ -44,7 +44,7 @@
       </div>
     </tab>
     <tab tabTitle="Keno Live">
-      live
+      <liveDraws> </liveDraws>
     </tab>
     <tab tabTitle="Forecasting">
       forecasting
