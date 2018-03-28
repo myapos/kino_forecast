@@ -106,8 +106,11 @@ export class AppComponent implements OnInit{
         console.log('goodResponse:', goodResponse);
 
         if(goodResponse[2]) {
-          this.todaysResult$ = goodResponse[2];
+          this.todaysResult$ = [goodResponse[2]];
+          // debugger;
+          console.log('td results:', this.todaysResult$[0].results.indexOf(1));
         }
+
         const processedData = processData(goodResponse);
 
         const sortedData = processedData.sortableCountsAr;

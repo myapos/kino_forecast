@@ -17,6 +17,8 @@ export class LiveDraws {
 
     @Input() todaysResult;
 
+    public numbers:number[] = [];
+
     // events
      public chartClicked(e:any):void {
        console.log(e);
@@ -28,6 +30,9 @@ export class LiveDraws {
      
     constructor() {
       // debugger;
+      for (let i=1; i<=80; i++) {
+          this.numbers.push(i);
+      }
     }
 
 }

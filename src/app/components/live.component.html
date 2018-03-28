@@ -1,2 +1,15 @@
-<div> Live Results</div>
-<div> {{todaysResult | json}} </div>
+<div> Live Results </div>
+<!-- <div *ngIf="todaysResult"> {{ todaysResult[0].results | json}}</div> -->
+<div *ngFor='let res of todaysResult;'>
+  <div> Draw Time: {{ res.drawTime }}</div>
+  <div> Draw Number: {{ res.drawNo }}</div>
+  <!-- <div> Results: {{ res.results }}</div> -->
+</div>
+
+<div class='wrapper'>
+  <div *ngFor='let number of numbers;'>
+    <div *ngIf="todaysResult">
+      <div [ngClass]="todaysResult && todaysResult[0].results.includes(number) ? 'box winning' : 'box'">{{ number }}</div>
+  </div>
+  </div>
+</div>
