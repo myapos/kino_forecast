@@ -14,8 +14,8 @@ export const generateDates = (mode, payload) => {
   } else if (mode === 'currentDate') {
     // debugger;
     let date = new Date();
-    dt = new Date(); // new Date(date.setDate(date.getDate() - 1))
-    end = new Date();
+    dt = new Date(); //new Date(date.setDate(date.getDate() - 1));
+    end = new Date(); //new Date(date.setDate(date.getDate() - 1));
   }
 
 

@@ -36,7 +36,17 @@ export function reducer (state = initialState, action: Action): AppState {
             });
 
             return newState;
-        } else if(action.type === initializeActions.CALL_UNPLUG_API) {
+        } else if(action.type === initializeActions.LOAD_DATA_LAST_DRAW) {
+            // debugger;
+            const data = action.payload[0];
+            // extract last draw
+
+            const lastDraw = {
+                lastDraw: data[data.length -1 ]
+            };
+            console.log('lastDraw:', lastDraw);
+            return Object.assign({}, state, lastDraw );
+        }else if(action.type === initializeActions.CALL_UNPLUG_API) {
             debugger;
             const data = action.payload;
             return Object.assign({}, state, data );

@@ -15,7 +15,7 @@ import {
 
 export class LiveDraws {
 
-    // @Input() dailyMaximumOccurences;
+    @Input() todaysResult;
 
     // events
      public chartClicked(e:any):void {

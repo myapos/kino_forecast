@@ -34,6 +34,7 @@ export class AppComponent implements OnInit{
   occurences$;
   dailyMaximumOccurences$;
   timeInt$;
+  todaysResult$;
   // public barChartLabels:string[] = [];
   // public barChartType:string = 'bar';
   // public barChartLegend:boolean = false;
@@ -103,6 +104,10 @@ export class AppComponent implements OnInit{
         // debugger;
 
         console.log('goodResponse:', goodResponse);
+
+        if(goodResponse[2]) {
+          this.todaysResult$ = goodResponse[2];
+        }
         const processedData = processData(goodResponse);
 
         const sortedData = processedData.sortableCountsAr;
@@ -176,6 +181,7 @@ export class AppComponent implements OnInit{
   }
 
   manageTabs(event) {
+    // debugger;
     // console.log('log:', event);
     if(event.tabTitle === 'Keno Live') {
       // debugger;
