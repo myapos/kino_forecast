@@ -15,8 +15,10 @@ export const generateDates = (mode, payload) => {
     // debugger;
     let date1 = new Date();
     let date2 = new Date();
-    dt = new Date(date1.setDate(date1.getDate() - 1));
-    end = new Date(date2.setDate(date2.getDate() - 1)); //new Date(date.setDate(date.getDate() - 1));
+    // dt = new Date(date1.setDate(date1.getDate() - 1));
+    // end = new Date(date2.setDate(date2.getDate() - 1)); //new Date(date.setDate(date.getDate() - 1));
+    dt = new Date();
+    end = new Date();
   }
 
 
