@@ -202,7 +202,7 @@ export default data => {
 
   const counts = occurences(result);
 
-  console.log('counts:', counts);
+  // console.log('counts:', counts);
 
   const sortableCounts = [];
 
@@ -229,9 +229,9 @@ export default data => {
     return temp;
   });
 
-  console.log('sorted counts:', sortableCounts);
+  // console.log('sorted counts:', sortableCounts);
 
-  console.log('sorted counts ar:', sortableCountsAr);
+  // console.log('sorted counts ar:', sortableCountsAr);
 
   return({
     result,

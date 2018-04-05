@@ -9,16 +9,7 @@
   ></ngx-spinner>
   <tabs (currentTabChange)="manageTabs($event)">
     <tab tabTitle="Home" active="true">
-      <div *ngIf="apiData$ | async as d_">
-      <!--
-        <div *ngFor="let dd of d_; let rowIndex1 = index">
-          <div *ngFor="let ddd of dd; let rowIndex = index">
-            <h2> ******** Draw Index {{ ((rowIndex1 + 1 ) * rowIndex) + 1 }} *****</h2>
-            <h3> Draw Number: {{ ddd.drawNo }} </h3>
-            <h3> DrawTime: {{ ddd.drawTime }} </h3>
-            <h3> Results: {{ ddd.results }} </h3>
-           </div>   
-        </div> -->
+      <div *ngIf="apiData$ || Object.keys(apiData$) | async as d_">
 
       <dateSelector> </dateSelector>
 

@@ -24,14 +24,14 @@ export function reducer (state = initialState, action: Action): AppState {
             // construct new state object
             const newState = {};
             Object.keys(st).map(key => {
-                console.log('key:',key);
+                // console.log('key:',key);
                 if(key === 'draws' || key === 'start' || key === 'end') {
                     newState[key] = st[key];
                 }
             });
 
             data.map((item, index) => {
-                console.log('item:',item);
+                // console.log('item:',item);
                 newState[index] = item;
             });
 
@@ -44,7 +44,7 @@ export function reducer (state = initialState, action: Action): AppState {
             const lastDraw = {
                 lastDraw: data[data.length -1 ]
             };
-            console.log('lastDraw:', lastDraw);
+            // console.log('lastDraw:', lastDraw);
             return Object.assign({}, state, lastDraw );
         }else if(action.type === initializeActions.CALL_UNPLUG_API) {
             debugger;

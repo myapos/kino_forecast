@@ -85,7 +85,8 @@ export class AppComponent implements OnInit{
     private Effects : Effects,
     private spinner: NgxSpinnerService
    ) {
-    this.spinner$ = spinner;
+    // this.spinner$ = spinner;
+
     this.apiData$ = this.store.select(state => {
       if(state.apiData.data.draws && Object.keys(state.apiData.data).length > 1) {
         const res = Object.keys(state.apiData.data).map(key => {
@@ -97,24 +98,33 @@ export class AppComponent implements OnInit{
         // Step 2. Create an empty array.
         let goodResponse = [];
         // Step 3. Iterate throw all keys.
-        // debugger;
+
         evilResponseProps.map(key => {
-          // debugger;
+
           if(key !== 'draws' && key !== 'start'&& key !== 'end'){
             goodResponse.push(state.apiData.data[key]);
           }
         });
 
+        // console.log('goodResponse:', goodResponse);
         // debugger;
+        if(goodResponse[goodResponse.length - 1]) {
 
-        console.log('goodResponse:', goodResponse);
+          this.todaysResult$ = [goodResponse[goodResponse.length - 1]];
 
-        if(goodResponse[2]) {
-          this.todaysResult$ = [goodResponse[2]];
-          // debugger;
           if(this.todaysResult$[0].results) {
-            console.log('td results:', this.todaysResult$[0].results.indexOf(1));
-          }
+            // console.log('td results:', this.todaysResult$[0].results.indexOf(1));
+          } 
+        }else {
+
+          this.todaysResult$ = [];
+          const temp = {
+            drawNo: -1,
+            drawTime: -1,
+            results: []
+          };
+          this.todaysResult$.push(temp);
+          // this.todaysResult$[0].results = ['no results yet'];
         }
 
         const processedData = processData(goodResponse);
@@ -135,7 +145,6 @@ export class AppComponent implements OnInit{
         this.polarAreaChartData.length = 0;
         this.radarChartData.length = 0;
 
-        // debugger;
         // this.barChartLabels = [];
         for (let segm in this.occurences$) {
           let data = [];
@@ -150,12 +159,6 @@ export class AppComponent implements OnInit{
             this.doughnutChartLabels.push(segm.toString());
             this.polarAreaChartLabels.push(segm.toString());
             this.radarChartLabels.push(segm.toString());
-            // this.barChartLabels.push(segm.toString());
-
-            // this.barChartData.push({
-            //   data,
-            //   label: segm
-            // })
 
             this.radarChartData.push({
               data,
@@ -165,18 +168,23 @@ export class AppComponent implements OnInit{
             this.polarAreaChartData.push(this.occurences$[segm]);
           }
         }
-        // debugger;
 
-        // this.store.dispatch(this.initializeActions.callUnplugApi(processedData.unplugData));
 
-        // trigger action to unplug api
+        // hide spinner
 
-        // load graph for histogram
         this.spinner.hide();
-        
+
         return goodResponse;
       } else {
-        return [];
+
+        this.todaysResult$ = [];
+        const temp = {
+          drawNo: -1,
+          drawTime: -1,
+          results: []
+        };
+        this.todaysResult$.push(temp);
+        return {};
       }
     });
 
@@ -190,29 +198,31 @@ export class AppComponent implements OnInit{
     this.store.dispatch(this.initializeActions.loadData());
 
     this.spinner.show();
-    // /** spinner starts on init */
-    // this.spinner.show();
- 
-    // setTimeout(() => {
-    //     /** spinner ends after 5 seconds */
-    //     this.spinner.hide();
-    // }, 5000);
 
   }
 
   manageTabs(event) {
-    // debugger;
-    // console.log('log:', event);
-    if(event.tabTitle === 'Keno Live') {
-      // debugger;
+
+    if (event.tabTitle === 'Keno Live') {
+      this.store.dispatch(this.initializeActions.getDrawsOfCurrentDate());
+
       this.timeInt$ = setInterval(() => { 
-        console.log('getting draw results...'); 
+        console.log('getting draw results...');
+
         this.store.dispatch(this.initializeActions.getDrawsOfCurrentDate());
+        this.spinner.show();
       }, interval);
-      // log a message every x secs
-    } else {
+
+      this.spinner.show();
+    } else if(event.tabTitle === 'Home' || event.tabTitle === 'Forecasting') {
+      
       clearInterval(this.timeInt$);
       console.log('stopping getting draw results...'); 
+
+      this.store.dispatch(this.initializeActions.initialize());
+      this.store.dispatch(this.initializeActions.loadData());
+      this.spinner.show();
     }
+
   }
 }

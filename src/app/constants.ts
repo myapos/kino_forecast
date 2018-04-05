@@ -1,6 +1,6 @@
 export const numOfNumbers = 80;
 
-export const interval = 5000; // 300000 5 mins
+export const interval = 60000; // 300000 5 mins
 
 export const getHistoryResults = `getHistoryResults`;
 

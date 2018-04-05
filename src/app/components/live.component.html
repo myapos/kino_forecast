@@ -1,15 +1,19 @@
-<div> Live Results </div>
-<!-- <div *ngIf="todaysResult"> {{ todaysResult[0].results | json}}</div> -->
-<div *ngFor='let res of todaysResult;'>
-  <div> Draw Time: {{ res.drawTime }}</div>
-  <div> Draw Number: {{ res.drawNo }}</div>
-  <!-- <div> Results: {{ res.results }}</div> -->
+<div *ngIf="todaysResult[0].results && todaysResult[0].results.length > 0; else noResultsYet">
+  <h2> Live Results </h2>
+  <div *ngFor='let res of todaysResult;'>
+    <div> Draw Time: {{ res.drawTime }}</div>
+    <div> Draw Number: {{ res.drawNo }}</div>
+  </div>
+  <div class='wrapper'>
+    <div *ngFor='let number of numbers;'>
+        <div [ngClass]="todaysResult[0].results && todaysResult[0].results.includes(number) ? 
+              ( todaysResult[0].results.indexOf(number) === todaysResult[0].results.length - 1 ? 'box kino_bonus' : 'box winning') :'box'
+              ">{{ number }}
+        </div>
+    </div> 
+  </div>
 </div>
 
-<div class='wrapper'>
-  <div *ngFor='let number of numbers;'>
-    <div *ngIf="todaysResult">
-      <div [ngClass]="todaysResult[0].results && todaysResult[0].results.includes(number) ? 'box winning' : 'box'">{{ number }}</div>
-  </div>
-  </div>
-</div>
+<ng-template #noResultsYet>
+  Kino lottery is not active for now. Please wait.
+</ng-template>

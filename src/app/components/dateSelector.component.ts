@@ -24,7 +24,7 @@ import { Observable } from 'rxjs/Observable';
 @Component({
     selector: 'dateSelector',
     template: `
-    <div> Please select time frame and press process button:</div>
+    <h3> Please select time frame</h3>
     <br>
     <label>
         Start Date
@@ -38,7 +38,7 @@ import { Observable } from 'rxjs/Observable';
         <owl-date-time [pickerType]="'calendar'" #dt4></owl-date-time>
     </label>
 
-    <button (click)="onClickMe($event)">Process</button>`,
+    <button (click)="onClickMe($event)">Get it</button>`,
     styleUrls: ['../app.component.styl'],
     encapsulation: ViewEncapsulation.Native
 })
@@ -57,7 +57,7 @@ export class DateSelector implements AfterViewInit{
       // debugger;
       const selectedStart = this.start.nativeElement.value;
       const selectedEnd = this.end.nativeElement.value;
-      console.log('clicked:');
+      // console.log('clicked:');
       // console.log('log:', document.getElementById('dt3'));
       // console.log('start: ',this.start.nativeElement.value);
       // console.log('end: ',this.end.nativeElement.value);
@@ -91,7 +91,7 @@ export class DateSelector implements AfterViewInit{
   ngAfterViewInit() {
     // child is set
     // outputs `I am span`
-    console.log('start: ',this.start.nativeElement.value);
+    // console.log('start: ',this.start.nativeElement.value);
 
     this.start.nativeElement.value = `${startDate.getMonth() + 1}/${startDate.getDate()}/${startDate.getFullYear()}`;
     this.end.nativeElement.value = `${endDate.getMonth() + 1}/${endDate.getDate()}/${endDate.getFullYear()}`;
