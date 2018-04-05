@@ -42,6 +42,8 @@ import { DateSelector } from './components/dateSelector.component';
 
 import { LiveDraws } from './components/live.component';
 
+// Import library module
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -62,6 +64,7 @@ import { LiveDraws } from './components/live.component';
     TabModule,
     OwlDateTimeModule, 
     OwlNativeDateTimeModule,
+    NgxSpinnerModule,
     // StoreModule.forRoot(reducer),
     StoreModule.forRoot({ apiData: reducer }),
     StoreDevtoolsModule.instrument({

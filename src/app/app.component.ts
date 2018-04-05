@@ -18,6 +18,8 @@ import { numOfNumbers, interval } from './constants';
 
 import { DoughnutComponent } from './components/doughnut.component';
 
+import { NgxSpinnerService } from 'ngx-spinner';
+
 // https://alligator.io/angular/chartjs-ng2-charts/
 // https://angular.io/guide/displaying-data
 // https://symbiotics.co.za/using-observables-in-angular-4-to-get-data-from-an-api-service/
@@ -80,7 +82,8 @@ export class AppComponent implements OnInit{
   constructor(
     private store: Store<any>,
     private initializeActions: initializeActions,
-    private Effects : Effects
+    private Effects : Effects,
+    private spinner: NgxSpinnerService
    ) {
     this.apiData$ = this.store.select(state => {
       if(state.apiData.data.draws && Object.keys(state.apiData.data).length > 1) {
@@ -108,7 +111,9 @@ export class AppComponent implements OnInit{
         if(goodResponse[2]) {
           this.todaysResult$ = [goodResponse[2]];
           // debugger;
-          console.log('td results:', this.todaysResult$[0].results.indexOf(1));
+          if(this.todaysResult$[0].results) {
+            console.log('td results:', this.todaysResult$[0].results.indexOf(1));
+          }
         }
 
         const processedData = processData(goodResponse);
@@ -166,7 +171,8 @@ export class AppComponent implements OnInit{
         // trigger action to unplug api
 
         // load graph for histogram
-
+        this.spinner.hide();
+        
         return goodResponse;
       } else {
         return [];
@@ -181,6 +187,15 @@ export class AppComponent implements OnInit{
     this.store.dispatch(this.initializeActions.initialize());
     
     this.store.dispatch(this.initializeActions.loadData());
+
+    // /** spinner starts on init */
+    // this.spinner.show();
+ 
+    // setTimeout(() => {
+    //     /** spinner ends after 5 seconds */
+    //     this.spinner.hide();
+    // }, 5000);
+
   }
 
   manageTabs(event) {

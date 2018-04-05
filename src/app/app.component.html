@@ -1,6 +1,12 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <h2> {{title}} </h2>
-
+  <ngx-spinner
+  bdOpacity = 0.9
+  bdColor = "#333"
+  size = "large"
+  color = "#fff"
+  type = "ball-clip-rotate"
+  ></ngx-spinner>
   <tabs (currentTabChange)="manageTabs($event)">
     <tab tabTitle="Home" active="true">
       <div *ngIf="apiData$ | async as d_">
@@ -55,5 +61,5 @@
     <tab tabTitle="Contact">
       Contact
     </tab>
-  <tabs>
+  </tabs>
   

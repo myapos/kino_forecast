@@ -9,7 +9,7 @@
 <div class='wrapper'>
   <div *ngFor='let number of numbers;'>
     <div *ngIf="todaysResult">
-      <div [ngClass]="todaysResult && todaysResult[0].results.includes(number) ? 'box winning' : 'box'">{{ number }}</div>
+      <div [ngClass]="todaysResult[0].results && todaysResult[0].results.includes(number) ? 'box winning' : 'box'">{{ number }}</div>
   </div>
   </div>
 </div>

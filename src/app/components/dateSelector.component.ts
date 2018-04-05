@@ -17,6 +17,10 @@ import { initializeActions } from '../actions';
 
 import { startDateStr, endDateStr, startDate, endDate } from '../constants';
 
+import { NgxSpinnerService } from 'ngx-spinner';
+
+import { Observable } from 'rxjs/Observable';
+
 @Component({
     selector: 'dateSelector',
     template: `
@@ -47,6 +51,7 @@ export class DateSelector implements AfterViewInit{
     
     @ViewChild('start') start; 
     @ViewChild('end') end; 
+    apiData$: Observable<any>;
 
     onClickMe(event: any) {
       // debugger;
@@ -56,8 +61,10 @@ export class DateSelector implements AfterViewInit{
       // console.log('log:', document.getElementById('dt3'));
       // console.log('start: ',this.start.nativeElement.value);
       // console.log('end: ',this.end.nativeElement.value);
+      // debugger;
       this.store.dispatch(this.initializeActions.setStartAndEndDate(selectedStart, selectedEnd));
       // debugger;
+      this.spinner.show();
       // this.store.dispatch(this.initializeActions.loadDataRange());
       // this.clickMessage = 'You are my hero!';
     }
@@ -66,15 +73,15 @@ export class DateSelector implements AfterViewInit{
 
      constructor(
       private store: Store<any>,
-      private initializeActions: initializeActions) {
-      // debugger;
-
+      private initializeActions: initializeActions,
+      private spinner: NgxSpinnerService) {
+       this.apiData$ = this.store.select(state => {
+         debugger;
+       });
     }
 
     ngOnInit() {
     // debugger;
-
-
 
     // this.store.dispatch(this.initializeActions.initialize());
     
