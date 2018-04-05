@@ -18,6 +18,7 @@ import { numOfNumbers, interval } from './constants';
 
 import { DoughnutComponent } from './components/doughnut.component';
 
+// https://napster2210.github.io/ngx-spinner/
 import { NgxSpinnerService } from 'ngx-spinner';
 
 // https://alligator.io/angular/chartjs-ng2-charts/
@@ -107,10 +108,37 @@ export class AppComponent implements OnInit{
         });
 
         // console.log('goodResponse:', goodResponse);
+        // console.log('good response last:', goodResponse[goodResponse.length - 1]);
         // debugger;
         if(goodResponse[goodResponse.length - 1]) {
 
-          this.todaysResult$ = [goodResponse[goodResponse.length - 1]];
+          const tempRes = [goodResponse[goodResponse.length - 1]];
+          // let drawTime = '';
+          var res__ = {
+              drawNo: -1,
+              drawTime: '',
+              results: []
+            };
+            
+          // process time
+          if(tempRes[0].drawTime) {
+            console.log('draw time:', tempRes[0].drawTime.split('T'));
+            let drawTime = tempRes[0].drawTime.split('T')[0] + ' ' + tempRes[0].drawTime.split('T')[1];
+            res__ = {  
+              results: tempRes[0].results,
+              drawTime: drawTime,
+              drawNo: tempRes[0].drawNo
+            };
+            // const drawTime = res[0].drawTime.split('T');
+            console.log('res__:', res__);
+            this.todaysResult$ = [res__];
+          } else {
+            this.todaysResult$ = tempRes;
+          }
+
+
+          // debugger;
+
 
           if(this.todaysResult$[0].results) {
             // console.log('td results:', this.todaysResult$[0].results.indexOf(1));
