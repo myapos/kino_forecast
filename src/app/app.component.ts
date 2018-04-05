@@ -85,6 +85,7 @@ export class AppComponent implements OnInit{
     private Effects : Effects,
     private spinner: NgxSpinnerService
    ) {
+    this.spinner$ = spinner;
     this.apiData$ = this.store.select(state => {
       if(state.apiData.data.draws && Object.keys(state.apiData.data).length > 1) {
         const res = Object.keys(state.apiData.data).map(key => {
@@ -188,6 +189,7 @@ export class AppComponent implements OnInit{
     
     this.store.dispatch(this.initializeActions.loadData());
 
+    this.spinner.show();
     // /** spinner starts on init */
     // this.spinner.show();
  

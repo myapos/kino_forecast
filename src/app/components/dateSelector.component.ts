@@ -93,8 +93,8 @@ export class DateSelector implements AfterViewInit{
     // outputs `I am span`
     console.log('start: ',this.start.nativeElement.value);
 
-    this.start.nativeElement.value = `${startDate.getDate()}-${startDate.getMonth() + 1}-${startDate.getFullYear()}`;
-    this.end.nativeElement.value = `${endDate.getDate()}-${endDate.getMonth() + 1}-${endDate.getFullYear()}`;
+    this.start.nativeElement.value = `${startDate.getMonth() + 1}/${startDate.getDate()}/${startDate.getFullYear()}`;
+    this.end.nativeElement.value = `${endDate.getMonth() + 1}/${endDate.getDate()}/${endDate.getFullYear()}`;
     // debugger;
   }
 }
