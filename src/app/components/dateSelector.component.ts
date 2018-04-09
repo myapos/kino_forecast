@@ -38,7 +38,15 @@ import { Observable } from 'rxjs/Observable';
         <owl-date-time [pickerType]="'calendar'" #dt4></owl-date-time>
     </label>
 
-    <button (click)="onClickMe($event)">Get it</button>`,
+    <button (click)="onClickMe($event)">Get it</button>
+    <h3> Please select number of draws to compute most possible values for the current Date</h3>
+    <br>
+    <label>
+        Number of draws:
+        <input #lastDraws id="lastDraws">
+    </label>
+    <button (click)="getLastDraws($event)">Get it</button>
+    `,
     styleUrls: ['../app.component.styl'],
     encapsulation: ViewEncapsulation.Native
 })
@@ -51,6 +59,7 @@ export class DateSelector implements AfterViewInit{
     
     @ViewChild('start') start; 
     @ViewChild('end') end; 
+    @ViewChild('lastDraws') lastDraws; 
     apiData$: Observable<any>;
 
     onClickMe(event: any) {
@@ -69,15 +78,23 @@ export class DateSelector implements AfterViewInit{
       // this.clickMessage = 'You are my hero!';
     }
 
+    getLastDraws(event: any) {
+      // debugger;
+      // console.log('lastDraws:', document.getElementById('lastDraws'));
+      console.log('lastDraws:', this.lastDraws.nativeElement.value);
+      // debugger;
+      this.store.dispatch(this.initializeActions.loadCustomLastDraws(this.lastDraws.nativeElement.value));  
+    }
+
     values = '';
 
      constructor(
       private store: Store<any>,
       private initializeActions: initializeActions,
       private spinner: NgxSpinnerService) {
-       this.apiData$ = this.store.select(state => {
-         debugger;
-       });
+       // this.apiData$ = this.store.select(state => {
+       //   debugger;
+       // });
     }
 
     ngOnInit() {

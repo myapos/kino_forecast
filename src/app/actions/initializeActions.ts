@@ -90,4 +90,13 @@ export class initializeActions {
             payload: data
         };
     }
+
+    static LOAD_CUSTOM_LAST_DRAWS = '[Data] Load Custom Last Draws';
+    loadCustomLastDraws(data): Action {
+        // debugger;
+        return {
+            type: initializeActions.LOAD_CUSTOM_LAST_DRAWS,
+            payload: data
+        };
+    }
  }

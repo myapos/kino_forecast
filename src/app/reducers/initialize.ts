@@ -62,6 +62,24 @@ export function reducer (state = initialState, action: Action): AppState {
             // debugger;
             const data = action.payload;
             return Object.assign({}, state, data );
+        } else if(action.type === initializeActions.LOAD_CUSTOM_LAST_DRAWS) {
+
+            const lastDraws = action.payload;
+            console.log('lastDraws:', lastDraws);
+
+            var previousState = state;
+
+            // construct new state object
+            const newState = {};
+
+            Object.keys(previousState).map(key => {
+                newState[key] = previousState[key];
+            });
+
+            newState['lastDraws'] = lastDraws;
+            console.log('newState:', newState);
+
+            return newState;
         } else {
             return state;
         }

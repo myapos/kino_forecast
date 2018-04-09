@@ -89,7 +89,9 @@ export class AppComponent implements OnInit{
     // this.spinner$ = spinner;
 
     this.apiData$ = this.store.select(state => {
+      // debugger;
       if(state.apiData.data.draws && Object.keys(state.apiData.data).length > 1) {
+        // debugger;
         const res = Object.keys(state.apiData.data).map(key => {
           // console.log( state.apiData.data[key]); 
           return state.apiData.data[key]; 
@@ -119,7 +121,8 @@ export class AppComponent implements OnInit{
               drawTime: '',
               results: []
             };
-            
+           
+          // debugger;
           // process time
           if(tempRes[0].drawTime) {
             console.log('draw time:', tempRes[0].drawTime.split('T'));
@@ -155,13 +158,45 @@ export class AppComponent implements OnInit{
           // this.todaysResult$[0].results = ['no results yet'];
         }
 
-        const processedData = processData(goodResponse);
+        // debugger;
 
-        const sortedData = processedData.sortableCountsAr;
+        if(parseInt(state.apiData.data.lastDraws)) {
 
-        this.dailyMaximumOccurences$ = sortedData.slice(0, 12);
+          // debugger;
 
-        this.occurences$ = processedData.counts;
+          const lastDrawsIndex = parseInt(state.apiData.data.lastDraws);
+
+          let arOfDraws = goodResponse[goodResponse.length - 2 ];
+
+          let lengthArOfDraws = arOfDraws.length;
+
+          let startSlice = lengthArOfDraws - lastDrawsIndex;
+
+          var sliceArOfDraws = arOfDraws.slice(startSlice, lengthArOfDraws);
+
+          console.log('arOfDraws:', arOfDraws);
+
+          console.log('sliceArOfDraws:', sliceArOfDraws);
+
+          const processedData = processData(sliceArOfDraws);
+
+          const sortedData = processedData.sortableCountsAr;
+
+          this.dailyMaximumOccurences$ = sortedData.slice(0, 12);
+
+          this.occurences$ = processedData.counts;
+
+        } else {
+          const processedData = processData(goodResponse);
+
+          const sortedData = processedData.sortableCountsAr;
+
+          this.dailyMaximumOccurences$ = sortedData.slice(0, 12);
+
+          this.occurences$ = processedData.counts;
+        }
+
+        
 
         // re initialize --- empty arrays
         this.doughnutChartLabels = [];

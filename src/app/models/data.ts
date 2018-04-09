@@ -6,4 +6,5 @@ export interface Data {
   // login?: string;
   // id?: number;
   draws?: object;
+  lastDraws?: object;
 }
