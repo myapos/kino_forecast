@@ -232,7 +232,6 @@ export class AppComponent implements OnInit{
           }
         }
 
-
         // hide spinner
 
         this.spinner.hide();

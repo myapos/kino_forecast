@@ -84,7 +84,7 @@ export class DateSelector implements AfterViewInit{
       console.log('lastDraws:', this.lastDraws.nativeElement.value);
       // debugger;
       this.store.dispatch(this.initializeActions.loadCustomLastDraws(this.lastDraws.nativeElement.value));  
-      this.spinner.show();
+      // this.spinner.show();
     }
 
     values = '';
