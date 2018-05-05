@@ -1201,7 +1201,7 @@ var numOfNumbers = 80;
 var interval = 30000; // 300000 5 mins
 var getHistoryResults = "getHistoryResults";
 // export const proxyBaseURL = `http://localhost:3000`;
-var proxyBaseURL = document.location.host.match(/kino.oncrete.gr/) ? "http://kino.oncrete.gr:81" : "http://localhost:81/kino";
+var proxyBaseURL = document.location.host.match(/kino.oncrete.gr/) ? "http://kino.oncrete.gr:81/kino" : "http://localhost:81/kino";
 console.log('proxyBaseURL:', proxyBaseURL);
 var startDateStr = '2018-03-25'; // YYYY-MM-DD
 var endDateStr = '2018-03-25'; // YYYY-MM-DD
