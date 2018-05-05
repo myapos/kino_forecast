@@ -6,7 +6,9 @@ export const getHistoryResults = `getHistoryResults`;
 
 // export const proxyBaseURL = `http://localhost:3000`;
 
-export const proxyBaseURL = `http://localhost:81/kino`;
+export const proxyBaseURL = document.location.host.match(/kino.oncrete.gr/)? `kino.oncrete.gr` :`http://localhost:81/kino`;
+
+console.log('proxyBaseURL:', proxyBaseURL);
 
 export const startDateStr = '2018-03-25'; // YYYY-MM-DD
 
