@@ -4,14 +4,14 @@ export default ar => {
 
       Array.isArray(item) && item.map(i => {
       // debugger;
-      i.results.map( el => {
+      i && i.results.map( el => {
         result.push(el);
       })
     });
 
     // case of custom selection of draws
     if(!Array.isArray(item)) {
-      item.results.map( el => {
+      item && item.results.map( el => {
         result.push(el);
       })
     }

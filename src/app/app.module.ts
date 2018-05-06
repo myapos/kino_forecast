@@ -42,6 +42,11 @@ import { DateSelector } from './components/dateSelector.component';
 
 import { LiveDraws } from './components/live.component';
 
+import { About } from './components/about.component';
+
+import { Contact } from './components/contact.component';
+
+
 // Import library module
 import { NgxSpinnerModule } from 'ngx-spinner';
 
@@ -53,7 +58,9 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     RadarComponent,
     DailyMax,
     DateSelector,
-    LiveDraws
+    LiveDraws,
+    About,
+    Contact
   ],
   imports: [
     HttpModule,
