@@ -9,10 +9,10 @@ import {
 @Component({
     selector: 'dailymax',
     template: `
-    <h3> Last 12 most possible values for time frame selection: </h3>
+    <h3> Most possible values for time frame selection: </h3>
     <table id="table">
         <tr> <th> Number </th> <th> Occurences </th></tr>
-        <tr *ngFor="let value of dailyMaximumOccurences; let rowIndex1 = index">
+        <tr *ngFor="let value of dailyMaximumOccurences; let rowIndex1 = index" [ngClass]="(rowIndex1 + 1) % 12 === 0 ? 'twelve' : '' ">
            <td *ngFor="let v of value;">
                {{ v }} 
            </td>
