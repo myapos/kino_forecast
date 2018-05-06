@@ -38,6 +38,8 @@ export class AppComponent implements OnInit{
   dailyMaximumOccurences$;
   timeInt$;
   todaysResult$;
+  Object;
+
   // public barChartLabels:string[] = [];
   // public barChartType:string = 'bar';
   // public barChartLegend:boolean = false;
