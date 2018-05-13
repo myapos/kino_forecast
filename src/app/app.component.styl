@@ -15,6 +15,16 @@ table, th, td {
   justify-items: center;
 }
 
+@media only screen and (max-width: 600px) {
+  .wrapper {
+    grid-template-columns: repeat(5, 50px); //50px 50px 50px 50px 50px 50px 50px 50px 50px 50px;
+  }
+  tabs, wrapper {
+    min-width:350px;
+    overflow-x:scroll;
+  }
+}
+
 .box {
   background-color: #444;
   color: #fff;
@@ -33,9 +43,4 @@ table, th, td {
 
 .twelve {
   background-color: lightblue;
-}
-
-tab {
-  min-width: 700px;
-  overflow-x: scroll;
 }
