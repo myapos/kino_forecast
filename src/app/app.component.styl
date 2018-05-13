@@ -1,9 +1,19 @@
 * {
   font-family: Verdana, Geneva, sans-serif;
 }
+
+body {
+  background-color: #464a59;
+}
+
 table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
+}
+
+.title {
+  text-align: center;
+  color: #fff;
 }
 
 .wrapper {
@@ -21,7 +31,15 @@ table, th, td {
   }
   tabs, wrapper {
     min-width:350px;
+    width: 70%;
     overflow-x:scroll;
+  }
+  .tabs-panel {
+    width: 70%;
+  }
+
+  .button {
+    margin-top: 15px;
   }
 }
 
@@ -42,5 +60,72 @@ table, th, td {
 }
 
 .twelve {
-  background-color: lightblue;
+  background-color: #464A45;
+}
+
+
+/* Style inputs */
+input{
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+/* Style the label to display next to the inputs */
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+/* Style the container */
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+
+/* Floating column for labels: 25% width */
+.col-25 {
+  float: left;
+  width: 25%;
+}
+
+/* Floating column for inputs: 75% width */
+.col-75 {
+  float: left;
+  width: 75%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+
+.button {
+  background-color: #464A45;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  margin-bottom: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+ul {
+  border: 1px solid #464A45!important;
 }

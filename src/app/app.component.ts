@@ -183,8 +183,8 @@ export class AppComponent implements OnInit{
           const processedData = processData(sliceArOfDraws);
 
           const sortedData = processedData.sortableCountsAr;
-
-          this.dailyMaximumOccurences$ = sortedData.slice(0, 40);
+          
+          this.dailyMaximumOccurences$ = sortedData.slice(0, 80);
 
           this.occurences$ = processedData.counts;
 
@@ -193,8 +193,8 @@ export class AppComponent implements OnInit{
 
           const sortedData = processedData.sortableCountsAr;
 
-          this.dailyMaximumOccurences$ = sortedData.slice(0, 40);
-
+          this.dailyMaximumOccurences$ = sortedData.slice(0, 80);
+          
           this.occurences$ = processedData.counts;
         }
 

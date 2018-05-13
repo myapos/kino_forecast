@@ -26,26 +26,54 @@ import { Observable } from 'rxjs/Observable';
     template: `
     <h3> Please select time frame</h3>
     <br>
-    <label>
-        Start Date
-        <input #start id="dt3" [owlDateTimeTrigger]="dt3" [owlDateTime]="dt3">
-        <owl-date-time [pickerType]="'calendar'" #dt3></owl-date-time>
-    </label>
+    <div class="container">
+      <form>
+        <div class="row">
+          <div class="col-25">
+            <label for="dt3">
+                Start Date
+            </label>
+          </div>
 
-    <label>
-        End Date
-        <input #end id="dt4" [owlDateTimeTrigger]="dt4" [owlDateTime]="dt4">
-        <owl-date-time [pickerType]="'calendar'" #dt4></owl-date-time>
-    </label>
+          <div class="col-75">
+            <input #start id="dt3" [owlDateTimeTrigger]="dt3" [owlDateTime]="dt3">
+            <owl-date-time [pickerType]="'calendar'" #dt3></owl-date-time>
+          </div>
+        </div> <!-- end of row !-->
+        <div class="row">
+          <div class="col-25">
+            <label for="dt4">
+                End Date
+            </label>
+          </div>
 
-    <button (click)="onClickMe($event)">Get it</button>
-    <h3> Please select number of draws to compute most possible values for the current Date</h3>
-    <br>
-    <label>
-        Number of draws:
-        <input #lastDraws id="lastDraws">
-    </label>
-    <button (click)="getLastDraws($event)">Get it</button>
+          <div class="col-75">
+            <input #end id="dt4" [owlDateTimeTrigger]="dt4" [owlDateTime]="dt4">
+            <owl-date-time [pickerType]="'calendar'" #dt4></owl-date-time>
+          </div>
+        </div> <!-- end of row !-->
+      </form>
+      <button class='button' (click)="onClickMe($event)">Get it</button>
+    </div>
+    
+    
+    <h3> Please select number of draws to compute occurences for each number for the selected time frame</h3>
+      <div class="container">
+        <form>
+          <div class="row">
+            <div class="col-25">
+              <label for="lastDraws">
+                Number of draws:
+              </label>
+            </div>
+
+            <div class="col-75">
+              <input #lastDraws id="lastDraws">
+            </div>
+          </div> <!-- end of row !-->
+        </form>
+      <button class='button' (click)="getLastDraws($event)">Get it</button>
+    </div>
     `,
     styleUrls: ['../app.component.styl'],
     encapsulation: ViewEncapsulation.Native
