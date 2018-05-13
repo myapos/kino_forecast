@@ -38,6 +38,8 @@ import { RadarComponent } from './components/radar.component';
 
 import { DailyMax } from './components/dailyMax.component';
 
+import { SmallerThanForty } from './components/smallerThanForty.component';
+
 import { DateSelector } from './components/dateSelector.component';
 
 import { LiveDraws } from './components/live.component';
@@ -57,6 +59,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     PolarComponent,
     RadarComponent,
     DailyMax,
+    SmallerThanForty,
     DateSelector,
     LiveDraws,
     About,

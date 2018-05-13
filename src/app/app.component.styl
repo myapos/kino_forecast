@@ -16,6 +16,11 @@ table, th, td {
   color: #fff;
 }
 
+.title24 {
+  color: #000;
+  margin-bottom: 5px;
+}
+
 .wrapper {
   margin-top: 10px;
   display: grid;
@@ -27,60 +32,11 @@ table, th, td {
 tabs {
   margin:0 auto;
 }
-/* screens smaller than 600px */
-@media only screen and (max-width: 600px) {
-  .wrapper {
-    grid-template-columns: repeat(5, 50px); //50px 50px 50px 50px 50px 50px 50px 50px 50px 50px;
-  }
-  tabs, wrapper {
-    min-width:350px;
-    width: 70%;
-    overflow-x:scroll;
-  }
-  .tabs-panel {
-    width: 70%;
-  }
 
-  .button {
-    margin-top: 15px;
-  }
-
-  .numberContainer {
-    width: 75%;
-  }
-
-  .box {
-    font-size: 75%;
-    padding: 15px;
-  }
-}
-
-@media screen and (max-width: 700px) and (min-width: 600px) {
-  .wrapper {
-    grid-template-columns: repeat(8, 50px); //50px 50px 50px 50px 50px 50px 50px 50px 50px 50px;
-  }
-
-  tabs, wrapper {
-    min-width:350px;
-    width: 85%;
-    overflow-x:scroll;
-  }
-  .tabs-panel {
-    width: 85%;
-  }
-
-  .button {
-    margin-top: 15px;
-  }
-
-  .numberContainer {
-    width: 85%;
-  }
-
-  .box {
-    font-size: 85%;
-    padding: 15px;
-  }
+.tableOccurences{
+ display: grid;
+ grid-template-columns: repeat(2, 300px);
+ grid-gap: 200px; 
 }
 
 .box {
@@ -166,4 +122,71 @@ label {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+}
+
+/* screens smaller than 600px */
+@media only screen and (max-width: 600px) {
+  .wrapper {
+    grid-template-columns: repeat(5, 50px); //50px 50px 50px 50px 50px 50px 50px 50px 50px 50px;
+  }
+  tabs, wrapper {
+    min-width:350px;
+    width: 70%;
+    overflow-x:scroll;
+  }
+  .tabs-panel {
+    width: 70%;
+  }
+
+  .button {
+    margin-top: 15px;
+  }
+
+  .numberContainer {
+    width: 75%;
+  }
+
+  .box {
+    font-size: 75%;
+    padding: 15px;
+  }
+  
+  .tableOccurences {
+    grid-template-columns: repeat(1, 100px);
+    grid-gap: 50px; 
+  }
+}
+
+@media screen and (max-width: 700px) and (min-width: 600px) {
+  .wrapper {
+    grid-template-columns: repeat(8, 50px); //50px 50px 50px 50px 50px 50px 50px 50px 50px 50px;
+  }
+
+  tabs, wrapper {
+    min-width:350px;
+    width: 85%;
+    overflow-x:scroll;
+  }
+  .tabs-panel {
+    width: 85%;
+  }
+
+  .button {
+    margin-top: 15px;
+  }
+
+  .numberContainer {
+    width: 85%;
+  }
+
+  .box {
+    font-size: 85%;
+    padding: 15px;
+  }
+  
+  .tableOccurences {
+    grid-template-columns: repeat(2, 200px);
+    grid-gap: 75px; 
+  }
+
 }

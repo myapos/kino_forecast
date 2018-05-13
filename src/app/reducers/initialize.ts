@@ -63,7 +63,6 @@ export function reducer (state = initialState, action: Action): AppState {
             const data = action.payload;
             return Object.assign({}, state, data );
         } else if(action.type === initializeActions.LOAD_CUSTOM_LAST_DRAWS) {
-
             const lastDraws = action.payload;
             console.log('lastDraws:', lastDraws);
 

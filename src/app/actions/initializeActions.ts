@@ -84,7 +84,6 @@ export class initializeActions {
 
     static LOAD_DATA_LAST_DRAW = '[Data] Load Data Last Draw';
     loadDataLastDraw(data): Action {
-        // debugger;
         return {
             type: initializeActions.LOAD_DATA_LAST_DRAW,
             payload: data
@@ -93,7 +92,6 @@ export class initializeActions {
 
     static LOAD_CUSTOM_LAST_DRAWS = '[Data] Load Custom Last Draws';
     loadCustomLastDraws(data): Action {
-        // debugger;
         return {
             type: initializeActions.LOAD_CUSTOM_LAST_DRAWS,
             payload: data

@@ -14,6 +14,8 @@ import { Effects } from './effects';
 
 import processData from './utils/processData';
 
+import getSmallerThanFortyFor24Values from './utils//getSmallerThanFortyFor24Values';
+
 import { numOfNumbers, interval } from './constants';
 
 import { DoughnutComponent } from './components/doughnut.component';
@@ -36,6 +38,7 @@ export class AppComponent implements OnInit{
   apiData$: Observable<any>;
   occurences$;
   dailyMaximumOccurences$;
+  smallerThanForty$;
   timeInt$;
   todaysResult$;
   Object;
@@ -186,7 +189,11 @@ export class AppComponent implements OnInit{
           
           this.dailyMaximumOccurences$ = sortedData.slice(0, 80);
 
+          this.smallerThanForty$ = getSmallerThanFortyFor24Values(this.dailyMaximumOccurences$);
+
           this.occurences$ = processedData.counts;
+          
+          // console.log('sm than forty', this.smallerThanForty$);
 
         } else {
           const processedData = processData(goodResponse);
@@ -195,10 +202,13 @@ export class AppComponent implements OnInit{
 
           this.dailyMaximumOccurences$ = sortedData.slice(0, 80);
           
-          this.occurences$ = processedData.counts;
-        }
+          this.smallerThanForty$ = getSmallerThanFortyFor24Values(this.dailyMaximumOccurences$);
+          
+          // console.log('sm than forty', this.smallerThanForty$);
 
-        
+          this.occurences$ = processedData.counts;
+
+        }
 
         // re initialize --- empty arrays
         this.doughnutChartLabels = [];

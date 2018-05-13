@@ -13,9 +13,16 @@
 
       <dateSelector> </dateSelector>
 
-      <dailymax 
-        [dailyMaximumOccurences]="dailyMaximumOccurences$">
-      </dailymax>
+      <div class='tableOccurences'>
+       <dailymax 
+         [dailyMaximumOccurences]="dailyMaximumOccurences$">
+       </dailymax>
+
+       <smallerThanForty 
+         [smallerThan40]="smallerThanForty$">
+       </smallerThanForty>       
+      </div>
+
 
       <doughnut 
         [doughnutChartData]="doughnutChartData"
