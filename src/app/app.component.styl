@@ -25,7 +25,8 @@ table, th, td {
   justify-items: center;
 }
 
-@media only screen and (max-width: 700px) {
+/* screens smaller than 600px */
+@media only screen and (max-width: 600px) {
   .wrapper {
     grid-template-columns: repeat(5, 50px); //50px 50px 50px 50px 50px 50px 50px 50px 50px 50px;
   }
@@ -48,6 +49,34 @@ table, th, td {
 
   .box {
     font-size: 75%;
+    padding: 15px;
+  }
+}
+
+@media screen and (max-width: 700px) and (min-width: 600px) {
+  .wrapper {
+    grid-template-columns: repeat(6, 50px); //50px 50px 50px 50px 50px 50px 50px 50px 50px 50px;
+  }
+
+  tabs, wrapper {
+    min-width:350px;
+    width: 70%;
+    overflow-x:scroll;
+  }
+  .tabs-panel {
+    width: 80%;
+  }
+
+  .button {
+    margin-top: 15px;
+  }
+
+  .numberContainer {
+    width: 80%;
+  }
+
+  .box {
+    font-size: 80%;
     padding: 15px;
   }
 }
