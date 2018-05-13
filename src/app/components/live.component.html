@@ -5,7 +5,7 @@
     <div> Draw Number: {{ res.drawNo }}</div>
   </div>
   <div class='wrapper'>
-    <div *ngFor='let number of numbers;'>
+    <div class='numberContainer' *ngFor='let number of numbers;'>
         <div [ngClass]="todaysResult[0].results && todaysResult[0].results.includes(number) ? 
               ( todaysResult[0].results.indexOf(number) === todaysResult[0].results.length - 1 ? 'box kino_bonus' : 'box winning') :'box'
               ">{{ number }}
