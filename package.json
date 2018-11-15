@@ -8,6 +8,7 @@
     "start_": "webpack-dev-server --port=4200 | babel-watch src/app/proxy/server.js --presets es2015",
     "start": "webpack-dev-server --port=4200",
     "build": "ng build --prod --base-href /kino_forecast/dist/",
+    "build_": "ng build --prod",
     "test": "karma start ./karma.conf.js",
     "lint": "ng lint",
     "e2e": "protractor ./protractor.conf.js",
