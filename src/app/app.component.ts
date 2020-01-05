@@ -164,11 +164,7 @@ export class AppComponent implements OnInit {
           // this.todaysResult$[0].results = ['no results yet'];
         }
 
-        //
-
         if (parseInt(state.apiData.data.lastDraws)) {
-          //
-
           const lastDrawsIndex = parseInt(state.apiData.data.lastDraws);
 
           let arOfDraws = goodResponse[goodResponse.length - 2];

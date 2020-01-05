@@ -5,7 +5,7 @@ export default ar => {
       item.map(i => {
         //
         i &&
-          i.results.map(el => {
+          i.winningNumbers.list.map(el => {
             result.push(el);
           });
       });
@@ -13,7 +13,7 @@ export default ar => {
     // case of custom selection of draws
     if (!Array.isArray(item)) {
       item &&
-        item.results.map(el => {
+        item.winningNumbers.list.map(el => {
           result.push(el);
         });
     }

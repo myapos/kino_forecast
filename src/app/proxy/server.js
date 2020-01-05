@@ -11,6 +11,10 @@ import { kinoUrl, baseKinoUrl } from "./server_constants";
 // https://codeforgeek.com/2015/12/reverse-proxy-using-expressjs/
 // http://thecodebarbarian.com/building-your-own-load-balancer-with-express-js
 
+// old url api
+
+// https://applications.opap.gr/DrawsRestServices/kino/drawDate/24-02-2017.json
+
 // Solution for forwarding from http to https taken from:
 // http://stackoverflow.com/questions/15801014/how-to-use-node-http-proxy-for-http-to-https-routing
 

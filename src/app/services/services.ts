@@ -27,9 +27,8 @@ export class Service {
 
   getSingle(singleUrl: string): Observable<Data> {
     return this.http.get(singleUrl).map((r: Response) => {
-      debugger;
-      console.log("json", r.json());
-      return r.json().draws.draw;
+      console.log("json");
+      return r.json().content;
     });
   }
 
