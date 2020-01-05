@@ -132,7 +132,7 @@ export class AppComponent implements OnInit {
             //   tempRes[0].drawTime.split("T")[1];
             res__ = {
               results: tempRes[0].winningNumbers.list,
-              drawTime: new Date(tempRes[0].drawTime), //drawTime,
+              drawTime: `${new Date(tempRes[0].drawTime)}`, //drawTime,
               drawNo: tempRes[0].drawId
             };
             // const drawTime = res[0].drawTime.split('T');
