@@ -1,5 +1,4 @@
 export default ar => {
-
   const formatDateToTimestamp = d => {
     //convert time to timestamp
     const matches = d.split(/-|T/);
@@ -9,21 +8,21 @@ export default ar => {
     return timestamp;
   };
 
-  const result = ar.map( item => {
-    const res = item.map (i => {
-      // debugger;
+  const result = ar.map(item => {
+    const res = item.map(i => {
+      //
       const time = formatDateToTimestamp(i.drawTime);
-      // debugger;
+      //
       let newRes = [...i.results];
       newRes.push(time);
       // console.log('log:', time);
-      return ({
+      return {
         time,
         results: newRes
-      })
+      };
     });
     return res;
   });
 
   return result;
-}
+};

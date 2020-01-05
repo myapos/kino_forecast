@@ -91,26 +91,26 @@ export class DateSelector implements AfterViewInit{
     apiData$: Observable<any>;
 
     onClickMe(event: any) {
-      // debugger;
+      // 
       const selectedStart = this.start.nativeElement.value;
       const selectedEnd = this.end.nativeElement.value;
       // console.log('clicked:');
       // console.log('log:', document.getElementById('dt3'));
       // console.log('start: ',this.start.nativeElement.value);
       // console.log('end: ',this.end.nativeElement.value);
-      // debugger;
+      // 
       this.store.dispatch(this.initializeActions.setStartAndEndDate(selectedStart, selectedEnd));
-      // debugger;
+      // 
       this.spinner.show();
       // this.store.dispatch(this.initializeActions.loadDataRange());
       // this.clickMessage = 'You are my hero!';
     }
 
     getLastDraws(event: any) {
-      // debugger;
+      // 
       // console.log('lastDraws:', document.getElementById('lastDraws'));
       console.log('lastDraws:', this.lastDraws.nativeElement.value);
-      // debugger;
+      // 
       this.store.dispatch(this.initializeActions.loadCustomLastDraws(this.lastDraws.nativeElement.value));  
       // this.spinner.show();
     }
@@ -122,12 +122,12 @@ export class DateSelector implements AfterViewInit{
       private initializeActions: initializeActions,
       private spinner: NgxSpinnerService) {
        // this.apiData$ = this.store.select(state => {
-       //   debugger;
+       //   
        // });
     }
 
     ngOnInit() {
-    // debugger;
+    // 
 
     // this.store.dispatch(this.initializeActions.initialize());
     
@@ -141,6 +141,6 @@ export class DateSelector implements AfterViewInit{
 
     this.start.nativeElement.value = `${startDate.getMonth() + 1}/${startDate.getDate()}/${startDate.getFullYear()}`;
     this.end.nativeElement.value = `${endDate.getMonth() + 1}/${endDate.getDate()}/${endDate.getFullYear()}`;
-    // debugger;
+    // 
   }
 }

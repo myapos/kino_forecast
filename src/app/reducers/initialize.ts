@@ -37,7 +37,7 @@ export function reducer (state = initialState, action: Action): AppState {
 
             return newState;
         } else if(action.type === initializeActions.LOAD_DATA_LAST_DRAW) {
-            // debugger;
+            // 
             const data = action.payload[0];
             // extract last draw
 
@@ -47,19 +47,19 @@ export function reducer (state = initialState, action: Action): AppState {
             // console.log('lastDraw:', lastDraw);
             return Object.assign({}, state, lastDraw );
         }else if(action.type === initializeActions.CALL_UNPLUG_API) {
-            debugger;
+            
             const data = action.payload;
             return Object.assign({}, state, data );
         } else if(action.type === initializeActions.UNPLUG_API_SUCCESS) {
-            debugger;
+            
             const data = action.payload;
             return Object.assign({}, state, data );
         } else if(action.type === initializeActions.START_AND_END_DATE) {
-            // debugger;
+            // 
             const data = action.payload;
             return Object.assign({}, state, data );
         } else if(action.type === initializeActions.GET_DRAWS_OF_CURRENT_DATE) {
-            // debugger;
+            // 
             const data = action.payload;
             return Object.assign({}, state, data );
         } else if(action.type === initializeActions.LOAD_CUSTOM_LAST_DRAWS) {
