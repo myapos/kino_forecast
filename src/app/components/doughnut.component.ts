@@ -21,7 +21,7 @@ import {
       </canvas>
     </div>`,
     styleUrls: ['../app.component.styl'],
-    encapsulation: ViewEncapsulation.Native
+    encapsulation: ViewEncapsulation.None
 })
 
 export class DoughnutComponent {

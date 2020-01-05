@@ -91,15 +91,12 @@ export class AppComponent implements OnInit {
     private Effects: Effects,
     private spinner: NgxSpinnerService
   ) {
-    // this.spinner$ = spinner;
-
     this.apiData$ = this.store.select(state => {
       if (
         state.apiData.data.draws &&
         Object.keys(state.apiData.data).length > 1
       ) {
         const res = Object.keys(state.apiData.data).map(key => {
-          // console.log( state.apiData.data[key]);
           return state.apiData.data[key];
         });
         // Step 1. Get all the object keys.
@@ -125,25 +122,14 @@ export class AppComponent implements OnInit {
 
           // process time
           if (tempRes[0].drawTime) {
-            console.log("tempRes:", tempRes[0]);
-            // let drawTime =
-            //   tempRes[0].drawTime.split("T")[0] +
-            //   " " +
-            //   tempRes[0].drawTime.split("T")[1];
             res__ = {
               results: tempRes[0].winningNumbers.list,
               drawTime: `${new Date(tempRes[0].drawTime)}`, //drawTime,
               drawNo: tempRes[0].drawId
             };
-            // const drawTime = res[0].drawTime.split('T');
-            console.log("res__:", res__);
             this.todaysResult$ = [res__];
           } else {
             this.todaysResult$ = tempRes;
-          }
-
-          if (this.todaysResult$[0].results) {
-            // console.log('td results:', this.todaysResult$[0].results.indexOf(1));
           }
         } else {
           this.todaysResult$ = [];
@@ -153,7 +139,6 @@ export class AppComponent implements OnInit {
             results: []
           };
           this.todaysResult$.push(temp);
-          // this.todaysResult$[0].results = ['no results yet'];
         }
 
         if (parseInt(state.apiData.data.lastDraws)) {

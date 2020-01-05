@@ -18,7 +18,7 @@ import {
         </tr> 
     </table>`,
     styleUrls: ['../app.component.styl'],
-    encapsulation: ViewEncapsulation.Native
+    encapsulation: ViewEncapsulation.None
 })
 
 export class DailyMax {

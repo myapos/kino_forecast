@@ -10,7 +10,7 @@ import {
     selector: 'contact',
     templateUrl: './contact.component.html',
     styleUrls: ['../app.component.styl'],
-    encapsulation: ViewEncapsulation.Native
+    encapsulation: ViewEncapsulation.None
 })
 
 export class Contact {
