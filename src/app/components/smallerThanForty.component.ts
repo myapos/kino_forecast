@@ -26,7 +26,7 @@ import {
     </table>
   `,
   styleUrls: ["../app.component.styl"],
-  encapsulation: ViewEncapsulation.Native
+  encapsulation: ViewEncapsulation.None
 })
 export class SmallerThanForty {
   @Input() smallerThan40;

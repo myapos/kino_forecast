@@ -1,1 +1,14 @@
-{ "presets": ["es2015"] }
+{
+  "presets": [
+    [
+      "es2015",
+      {
+        "useBuiltIns": "usage",
+        "corejs": 2,
+        "targets": {
+          "browsers": ["last 2 versions", "not ie < 10"]
+        }
+      }
+    ]
+  ]
+}
