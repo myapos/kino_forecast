@@ -94,12 +94,10 @@ export class AppComponent implements OnInit {
     // this.spinner$ = spinner;
 
     this.apiData$ = this.store.select(state => {
-      //
       if (
         state.apiData.data.draws &&
         Object.keys(state.apiData.data).length > 1
       ) {
-        //
         const res = Object.keys(state.apiData.data).map(key => {
           // console.log( state.apiData.data[key]);
           return state.apiData.data[key];
@@ -116,30 +114,26 @@ export class AppComponent implements OnInit {
           }
         });
 
-        // console.log('goodResponse:', goodResponse);
-        // console.log('good response last:', goodResponse[goodResponse.length - 1]);
-        //
         if (goodResponse[goodResponse.length - 1]) {
           const tempRes = [goodResponse[goodResponse.length - 1]];
-          // let drawTime = '';
+
           var res__ = {
             drawNo: -1,
             drawTime: "",
             results: []
           };
 
-          //
           // process time
           if (tempRes[0].drawTime) {
-            console.log("draw time:", tempRes[0].drawTime.split("T"));
-            let drawTime =
-              tempRes[0].drawTime.split("T")[0] +
-              " " +
-              tempRes[0].drawTime.split("T")[1];
+            console.log("tempRes:", tempRes[0]);
+            // let drawTime =
+            //   tempRes[0].drawTime.split("T")[0] +
+            //   " " +
+            //   tempRes[0].drawTime.split("T")[1];
             res__ = {
-              results: tempRes[0].results,
-              drawTime: drawTime,
-              drawNo: tempRes[0].drawNo
+              results: tempRes[0].winningNumbers.list,
+              drawTime: new Date(tempRes[0].drawTime), //drawTime,
+              drawNo: tempRes[0].drawId
             };
             // const drawTime = res[0].drawTime.split('T');
             console.log("res__:", res__);
@@ -147,8 +141,6 @@ export class AppComponent implements OnInit {
           } else {
             this.todaysResult$ = tempRes;
           }
-
-          //
 
           if (this.todaysResult$[0].results) {
             // console.log('td results:', this.todaysResult$[0].results.indexOf(1));
