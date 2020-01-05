@@ -4,15 +4,15 @@ export const interval = 30000; // 300000 5 mins
 
 export const getHistoryResults = `getHistoryResults`;
 
-// export const proxyBaseURL = `http://localhost:3000`;
+export const proxyBaseURL = `http://localhost:3000`;
 
-export const proxyBaseURL = document.location.host.match(/kino.oncrete.gr/)? `http://kino.oncrete.gr:81/kino` :`http://localhost:81/kino`;
+// export const proxyBaseURL = document.location.host.match(/kino.oncrete.gr/)? `http://kino.oncrete.gr:81/kino` :`http://localhost:81/kino`;
 
-console.log('proxyBaseURL:', proxyBaseURL);
+console.log("proxyBaseURL:", proxyBaseURL);
 
-export const startDateStr = '2018-03-25'; // YYYY-MM-DD
+export const startDateStr = "2018-03-25"; // YYYY-MM-DD
 
-export const endDateStr = '2018-03-25'; // YYYY-MM-DD
+export const endDateStr = "2018-03-25"; // YYYY-MM-DD
 
 let date = new Date();
 
@@ -26,4 +26,5 @@ export const endDate = new Date(); // YYYY-MM-DD
 
 // export const endDate = new Date('2017-12-31'); // YYYY-MM-DD
 
-export const unplugApiKey = '4fed9657fb6f9971daca5ebf7701728f3afec8871d9e76a87fd25266e0d902d5';
+export const unplugApiKey =
+  "4fed9657fb6f9971daca5ebf7701728f3afec8871d9e76a87fd25266e0d902d5";

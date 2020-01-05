@@ -10,7 +10,7 @@ import { storeFreeze } from 'ngrx-store-freeze';
 import * as fromInit from './initialize';
 
 import { environment } from '../../environments/environment';
-// debugger;
+// 
 export interface AppState {
     data?: fromInit.AppState;
 };
@@ -28,7 +28,7 @@ const reducers = {
 //     init: initReducer
 // });
 const combineReducersWithoutStateMutation = compose(storeFreeze, combineReducers);
-// debugger;
+// 
 const developmentReducer: ActionReducer<AppState> = combineReducersWithoutStateMutation(reducers);
 const productionReducer: ActionReducer<AppState> = combineReducers(reducers);
 

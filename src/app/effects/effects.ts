@@ -33,7 +33,7 @@ export class Effects {
         // .withLatestFrom(this.store$)
         .map((action) => { this.payload$ = action.payload;} )
         .switchMap(() => { 
-            // debugger; 
+            //  
             console.log('payload:', this.payload$);
             return this.svc.getData('range', this.payload$);})
         .map(data => this.initActions.loadDataSuccess(data));

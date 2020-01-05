@@ -42,6 +42,6 @@ export class DoughnutComponent {
      }
      
     constructor() {
-      // debugger;
+      // 
     }
 }
